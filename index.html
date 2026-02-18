@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Samrat - Veg & Non-Veg Family Restaurant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #e62e2e;
+            --pure-white: #ffffff;
+            --dark-gray: #333;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: var(--pure-white);
+            color: var(--dark-gray);
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--pure-white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+        }
+
+        .lang-btn {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://via.placeholder.com/1200x400');
+            background-size: cover;
+        }
+
+        .hero h1 {
+            color: var(--primary-red);
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Branches Section */
+        .branches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 50px 5%;
+            background-color: #f9f9f9;
+        }
+
+        .branch-card {
+            background: white;
+            border-top: 5px solid var(--primary-red);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 300px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .branch-card h3 { color: var(--primary-red); }
+        .veg-tag { color: green; font-weight: bold; }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .contact-info { font-size: 0.9rem; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">HOTEL SAMRAT</div>
+    <nav>
+        <button class="lang-btn" onclick="toggleLanguage()">English / मराठी</button>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1 id="main-title">हॉटेल सम्राट</h1>
+    <p id="sub-title">व्हेज-नॉनव्हेज फॅमिली रेस्टॉरंट - इथं मिळतं अगदी मनासारखं!</p>
+</section>
+
+<div class="branches">
+    <div class="branch-card">
+        <h3 id="br1-name">शाखा क्र. ०१</h3>
+        <p id="br1-addr">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव</p>
+        <p>📞 9011390365</p>
+    </div>
+
+    <div class="branch-card">
+        <h3 id="br2-name">शाखा क्र. ०२</h3>
+        <p id="br2-addr">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव</p>
+        <p>📞 9623575702</p>
+    </div>
+
+    <div class="branch-card" style="border-top-color: green;">
+        <h3 id="br3-name">शाखा क्र. ०३ <br><span class="veg-tag">(शुद्ध शाकाहारी)</span></h3>
+        <p id="br3-addr">सातारा - पंढरपूर रोड, मुगाव फाटा ल्हासुर्णे</p>
+        <p>📞 9604812425</p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Hotel Samrat. All Rights Reserved.</p>
+    <div class="contact-info" id="footer-text">गावरान चवीचा अनोखा अनुभव!</div>
+</footer>
+
+<script>
+    let currentLang = 'mr';
+
+    const content = {
+        en: {
+            title: "Hotel Samrat",
+            sub: "Veg-NonVeg Family Restaurant - Since 2021",
+            br1: "Branch No. 01",
+            addr1: "Satara-Pandharpur Road, Near Nayara Petrol Pump, Koregaon",
+            br2: "Branch No. 02",
+            addr2: "Koregaon-Pusegaon Road, Near Kumthe Phata, Koregaon",
+            br3: "Branch No. 03 (Pure Veg)",
+            addr3: "Satara-Pandharpur Road, Mugav Phata, Lhasurne",
+            footer: "Authentic Rural Taste Experience!"
+        },
+        mr: {
+            title: "हॉटेल सम्राट",
+            sub: "व्हेज-नॉनव्हेज फॅमिली रेस्टॉरंट - इथं मिळतं अगदी मनासारखं!",
+            br1: "शाखा क्र. ०१",
+            addr1: "सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव",
+            br2: "शाखा क्र. ०२",
+            addr2: "कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव",
+            br3: "शाखा क्र. ०३ (शुद्ध शाकाहारी)",
+            addr3: "सातारा - पंढरपूर रोड, मुगाव फाटा ल्हासुर्णे",
+            footer: "गावरान चवीचा अनोखा अनुभव!"
+        }
+    };
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'mr' ? 'en' : 'mr';
+        document.getElementById('main-title').innerText = content[currentLang].title;
+        document.getElementById('sub-title').innerText = content[currentLang].sub;
+        document.getElementById('br1-name').innerText = content[currentLang].br1;
+        document.getElementById('br1-addr').innerText = content[currentLang].addr1;
+        document.getElementById('br2-name').innerText = content[currentLang].br2;
+        document.getElementById('br2-addr').innerText = content[currentLang].addr2;
+        document.getElementById('br3-name').innerText = content[currentLang].br3;
+        document.getElementById('br3-addr').innerText = content[currentLang].addr3;
+        document.getElementById('footer-text').innerText = content[currentLang].footer;
+    }
+</script>
+
+</body>
+</html>

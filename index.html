@@ -3,60 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Samrat - The Royal Taste</title>
-    <link href="https://fonts.googleapis.com/css2?family=Khand:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Hotel Samrat | Royal Dining</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&family=Khand:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-red: #cc0000;
-            --pure-white: #ffffff;
-            --overlay: rgba(0, 0, 0, 0.6);
+            --royal-red: #B20000;
+            --gold: #D4AF37;
+            --dark-bg: #1A1A1A;
+            --pure-white: #FFFFFF;
+            --soft-white: #F4F4F4;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--pure-white);
+            background-color: var(--soft-white);
             color: #333;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, .logo { font-family: 'Khand', sans-serif; }
 
         /* Navigation */
         header {
-            background: var(--pure-white);
-            padding: 15px 6%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
         }
 
-        .logo { font-size: 2.2rem; color: var(--primary-red); font-weight: 700; }
-
-        .lang-btn {
-            background: var(--primary-red);
-            color: white;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.4s;
-            font-family: 'Poppins', sans-serif;
+        .logo { 
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem; 
+            color: var(--royal-red); 
+            font-weight: 700;
+            border-bottom: 2px solid var(--gold);
         }
 
-        .lang-btn:hover { background: #990000; letter-spacing: 1px; }
+        .lang-btn {
+            background: var(--royal-red);
+            color: var(--pure-white);
+            border: 2px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-        /* Hero Section with Hotel Interior Background */
+        .lang-btn:hover { background: var(--gold); color: var(--dark-bg); }
+
+        /* Hero Section */
         .hero {
-            height: 90vh;
-            background: linear-gradient(var(--overlay), var(--overlay)), 
-                        url('http://googleusercontent.com/image_collection/image_retrieval/8376604231428227959_0');
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1550966841-3ee3ad349081?auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -64,188 +72,191 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
-            margin-top: 60px;
+            color: var(--pure-white);
         }
 
-        .hero h1 { font-size: 4.5rem; margin-bottom: 15px; }
-        .hero p { font-size: 1.4rem; font-weight: 300; letter-spacing: 1px; }
+        .hero h1 { 
+            font-family: 'Cinzel', serif;
+            font-size: 5rem; 
+            margin-bottom: 10px; 
+            color: var(--gold);
+        }
 
-        /* Menu Section */
-        .menu-section { padding: 100px 8%; text-align: center; }
-        .section-title { font-size: 3rem; color: var(--primary-red); margin-bottom: 50px; position: relative; }
-        .section-title::after { content: ''; display: block; width: 80px; height: 4px; background: var(--primary-red); margin: 10px auto; }
+        .hero p { font-size: 1.5rem; letter-spacing: 2px; }
+
+        /* Floating Menu Section */
+        .menu-section { padding: 80px 10%; margin-top: -50px; }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .menu-item {
-            background: #fff;
-            border-radius: 20px;
+        .menu-card {
+            background: var(--pure-white);
+            border-radius: 0px;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+            transition: 0.4s;
+            position: relative;
         }
 
-        .menu-item:hover { transform: translateY(-15px); }
-        .menu-item img { width: 100%; height: 280px; object-fit: cover; }
-        .menu-content { padding: 25px; border-bottom: 8px solid var(--primary-red); }
-        .menu-content h3 { font-size: 2rem; color: #1a1a1a; margin-bottom: 12px; }
+        .menu-card:hover { transform: translateY(-10px); }
 
-        /* Branches */
-        .branch-section { padding: 80px 8%; background: #fefefe; }
-        .branch-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
+        .menu-card img { width: 100%; height: 300px; object-fit: cover; }
+
+        .card-body { 
+            padding: 25px; 
+            text-align: center; 
+            border-top: 4px solid var(--gold);
         }
 
-        .branch-card {
-            background: white;
-            padding: 35px;
-            border-radius: 15px;
-            width: 360px;
-            text-align: left;
-            border-left: 8px solid var(--primary-red);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        .card-body h3 { color: var(--royal-red); font-size: 2rem; margin-bottom: 5px; }
+
+        /* Branch Info */
+        .branches { 
+            background: var(--dark-bg); 
+            color: white; 
+            padding: 80px 10%; 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 40px; 
         }
 
-        .branch-card.veg { border-left-color: #2e7d32; }
-        .veg-tag { background: #2e7d32; color: white; padding: 2px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; display: inline-block; }
+        .branch-box {
+            border: 1px solid #444;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .branch-box:hover { border-color: var(--gold); background: #222; }
+
+        .branch-box h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.8rem; }
+
+        .veg-icon { color: #4CAF50; font-size: 0.9rem; font-weight: bold; }
 
         footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 50px 5%;
+            background: #111;
+            color: #777;
+            padding: 30px;
             text-align: center;
+            border-top: 1px solid var(--gold);
         }
 
-        .red-line { color: var(--primary-red); font-weight: bold; }
-
+        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
-            .menu-grid { grid-template-columns: 1fr; }
+            .menu-section { padding: 50px 5%; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">HOTEL SAMRAT</div>
-    <button class="lang-btn" onclick="toggleLanguage()">English / मराठी</button>
+    <div class="logo">SAMRAT</div>
+    <button class="lang-btn" onclick="toggleLang()">English / मराठी</button>
 </header>
 
 <section class="hero">
-    <h1 id="hero-title">हॉटेल सम्राट</h1>
-    <p id="hero-desc">अस्सल गावरान आणि मालवणी चवीचे माहेरघर</p>
+    <h1 id="h-title">हॉटेल सम्राट</h1>
+    <p id="h-sub">जिथे चव आणि राजेशाही थाट एकत्र येतात</p>
 </section>
 
 <section class="menu-section">
-    <h2 class="section-title" id="menu-h">आमचे खास पदार्थ</h2>
     <div class="menu-grid">
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=600&q=80" alt="Malvani">
-            <div class="menu-content">
-                <h3 id="m1-t">मालवणी थाळी</h3>
-                <p id="m1-d">कोकणच्या मातीतील अस्सल मसाल्यांची मेजवानी.</p>
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1626132646529-500637532537?auto=format&fit=crop&w=600&q=80" alt="Malvani Food">
+            <div class="card-body">
+                <h3 id="m1-t">मालवणी स्वाद</h3>
+                <p id="m1-d">अस्सल कोकणी मसाल्यांची जादू.</p>
             </div>
         </div>
-        <div class="menu-item">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/9915292770459840025_0" alt="Murg Musallam">
-            <div class="menu-content">
+
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80" alt="Murg Musallam">
+            <div class="card-body">
                 <h3 id="m2-t">मुर्ग मुसल्लम</h3>
-                <p id="m2-d">शाही पद्धतीने बनवलेले लज्जतदार चिकन.</p>
+                <p id="m2-d">शाही मेजवानीचा खरा अनुभव.</p>
             </div>
         </div>
-        <div class="menu-item">
-            <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80" alt="White Tandoor">
-            <div class="menu-content">
+
+        <div class="menu-card">
+            <img src="https://images.unsplash.com/photo-1626508065577-28df385844a9?auto=format&fit=crop&w=600&q=80" alt="White Tandoor">
+            <div class="card-body">
                 <h3 id="m3-t">व्हाईट तंदूर</h3>
-                <p id="m3-d">मलाईदार आणि ज्यूसी तंदूरी कबाब.</p>
+                <p id="m3-d">मलाईदार कबाबचा लज्जतदार स्वाद.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="branch-section">
-    <h2 class="section-title" id="br-h">आमच्या शाखा</h2>
-    <div class="branch-grid">
-        <div class="branch-card">
-            <h3 id="b1-t">शाखा क्र. ०१</h3>
-            <p id="b1-a">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव</p>
-            <p class="red-line">📞 9011390365</p>
-        </div>
-        <div class="branch-card">
-            <h3 id="b2-t">शाखा क्र. ०२</h3>
-            <p id="b2-a">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव</p>
-            <p class="red-line">📞 9623575702</p>
-        </div>
-        <div class="branch-card veg">
-            <span class="veg-tag">Pure Veg</span>
-            <h3 id="b3-t">शाखा क्र. ०३</h3>
-            <p id="b3-a">सातारा - पंढरपूर रोड, मुगाव फाटा ल्हासुर्णे</p>
-            <p class="red-line">📞 9604812425</p>
-        </div>
+<section class="branches">
+    <div class="branch-box">
+        <h3 id="b1-t">शाखा ०१</h3>
+        <p id="b1-a">सातारा-पंढरपूर रोड, कोरेगाव</p>
+        <p style="color: var(--gold); margin-top: 10px;">📞 9011390365</p>
+    </div>
+    <div class="branch-box">
+        <h3 id="b2-t">शाखा ०२</h3>
+        <p id="b2-a">कोरेगाव-पुसेगाव रोड, कोरेगाव</p>
+        <p style="color: var(--gold); margin-top: 10px;">📞 9623575702</p>
+    </div>
+    <div class="branch-box" style="border-color: #2e7d32;">
+        <h3 id="b3-t">शाखा ०३</h3>
+        <p class="veg-icon">● PURE VEG</p>
+        <p id="b3-a">मुगाव फाटा, ल्हासुर्णे</p>
+        <p style="color: var(--gold); margin-top: 10px;">📞 9604812425</p>
     </div>
 </section>
 
 <footer>
-    <p id="foot">© 2026 हॉटेल सम्राट | गावरान चवीचा अनोखा अनुभव!</p>
+    <p id="foot">© 2026 Hotel Samrat | Designed for Excellence</p>
 </footer>
 
 <script>
-    let currentLang = 'mr';
-    const data = {
+    let lang = 'mr';
+    const content = {
         en: {
-            hT: "Hotel Samrat", hD: "Authentic Rural & Malvani Flavors",
-            mH: "Our Special Menu", 
-            m1t: "Malvani Thali", m1d: "A treat of authentic Konkan spices.",
-            m2t: "Murg Musallam", m2d: "Delicious chicken cooked in royal style.",
-            m3t: "White Tandoor", m3d: "Creamy and juicy Tandoori kebabs.",
-            brH: "Our Branches",
-            b1t: "Branch No. 01", b1a: "Satara-Pandharpur Road, Koregaon",
-            b2t: "Branch No. 02", b2a: "Koregaon-Pusegaon Road, Koregaon",
-            b3t: "Branch No. 03", b3a: "Mugav Phata, Lhasurne",
-            f: "© 2026 Hotel Samrat | The Unique Rural Taste!"
+            t: "HOTEL SAMRAT", s: "Where Taste Meets Royalty",
+            m1t: "Malvani Taste", m1d: "Magic of authentic Konkan spices.",
+            m2t: "Murg Musallam", m2d: "The true royal feast experience.",
+            m3t: "White Tandoor", m3d: "Delicious taste of creamy kebabs.",
+            b1t: "Branch 01", b1a: "Satara-Pandharpur Road, Koregaon",
+            b2t: "Branch 02", b2a: "Koregaon-Pusegaon Road, Koregaon",
+            b3t: "Branch 03", b3a: "Mugav Phata, Lhasurne",
+            f: "© 2026 Hotel Samrat | Designed for Excellence"
         },
         mr: {
-            hT: "हॉटेल सम्राट", hD: "अस्सल गावरान आणि मालवणी चवीचे माहेरघर",
-            mH: "आमचे खास पदार्थ",
-            m1t: "मालवणी थाळी", m1d: "कोकणच्या मातीतील अस्सल मसाल्यांची मेजवानी.",
-            m2t: "मुर्ग मुसल्लम", m2d: "शाही पद्धतीने बनवलेले लज्जतदार चिकन.",
-            m3t: "व्हाईट तंदूर", m3d: "मलाईदार आणि ज्यूसी तंदूरी कबाब.",
-            brH: "आमच्या शाखा",
-            b1t: "शाखा क्र. ०१", b1a: "सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव",
-            b2t: "शाखा क्र. ०२", b2a: "कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव",
-            b3t: "शाखा क्र. ०३", b3a: "सातारा - पंढरपूर रोड, मुगाव फाटा ल्हासुर्णे",
+            t: "हॉटेल सम्राट", s: "जिथे चव आणि राजेशाही थाट एकत्र येतात",
+            m1t: "मालवणी स्वाद", m1d: "अस्सल कोकणी मसाल्यांची जादू.",
+            m2t: "मुर्ग मुसल्लम", m2d: "शाही मेजवानीचा खरा अनुभव.",
+            m3t: "व्हाईट तंदूर", m3d: "मलाईदार कबाबचा लज्जतदार स्वाद.",
+            b1t: "शाखा ०१", b1a: "सातारा-पंढरपूर रोड, कोरेगाव",
+            b2t: "शाखा ०२", b2a: "कोरेगाव-पुसेगाव रोड, कोरेगाव",
+            b3t: "शाखा ०३", b3a: "मुगाव फाटा, ल्हासुर्णे",
             f: "© 2026 हॉटेल सम्राट | गावरान चवीचा अनोखा अनुभव!"
         }
     };
 
-    function toggleLanguage() {
-        currentLang = currentLang === 'mr' ? 'en' : 'mr';
-        const l = data[currentLang];
-        document.getElementById('hero-title').innerText = l.hT;
-        document.getElementById('hero-desc').innerText = l.hD;
-        document.getElementById('menu-h').innerText = l.mH;
-        document.getElementById('m1-t').innerText = l.m1t;
-        document.getElementById('m1-d').innerText = l.m1d;
-        document.getElementById('m2-t').innerText = l.m2t;
-        document.getElementById('m2-d').innerText = l.m2d;
-        document.getElementById('m3-t').innerText = l.m3t;
-        document.getElementById('m3-d').innerText = l.m3d;
-        document.getElementById('br-h').innerText = l.brH;
-        document.getElementById('b1-t').innerText = l.b1t;
-        document.getElementById('b1-a').innerText = l.b1a;
-        document.getElementById('b2-t').innerText = l.b2t;
-        document.getElementById('b2-a').innerText = l.b2a;
-        document.getElementById('b3-t').innerText = l.b3t;
-        document.getElementById('b3-a').innerText = l.b3a;
-        document.getElementById('foot').innerText = l.f;
+    function toggleLang() {
+        lang = lang === 'mr' ? 'en' : 'mr';
+        document.getElementById('h-title').innerText = content[lang].t;
+        document.getElementById('h-sub').innerText = content[lang].s;
+        document.getElementById('m1-t').innerText = content[lang].m1t;
+        document.getElementById('m1-d').innerText = content[lang].m1d;
+        document.getElementById('m2-t').innerText = content[lang].m2t;
+        document.getElementById('m2-d').innerText = content[lang].m2d;
+        document.getElementById('m3-t').innerText = content[lang].m3t;
+        document.getElementById('m3-d').innerText = content[lang].m3d;
+        document.getElementById('b1-t').innerText = content[lang].b1t;
+        document.getElementById('b1-a').innerText = content[lang].b1a;
+        document.getElementById('b2-t').innerText = content[lang].b2t;
+        document.getElementById('b2-a').innerText = content[lang].b2a;
+        document.getElementById('b3-t').innerText = content[lang].b3t;
+        document.getElementById('b3-a').innerText = content[lang].b3a;
+        document.getElementById('foot').innerText = content[lang].f;
     }
 </script>
 

@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>हॉटेल सम्राट | The Royal Heritage</title>
-    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Rozha+One&family=Tiro+Devanagari+Marathi&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <title>हॉटेल सम्राट | Heritage In Motion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Tiro+Devanagari+Marathi&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --kumkum: #800000;
             --turmeric: #FFB800;
             --parchment: #FCF5E5;
             --ink: #1a1a1a;
-            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,35 +27,35 @@
         .marathi { font-family: 'Tiro Devanagari Marathi', serif; }
         .display { font-family: 'Rozha One', serif; }
 
-        /* SCROLL ANIMATED BORDER */
+        /* DYNAMIC SCROLL BORDER */
         #scroll-border {
             position: fixed;
             top: 15px; left: 15px; right: 15px; bottom: 15px;
             border: 6px double var(--kumkum);
             z-index: 1000;
             pointer-events: none;
-            clip-path: inset(0 0 100% 0); /* शुरुआती हालत: सिर्फ ऊपर की लाइन */
+            clip-path: inset(0 0 100% 0); /* Start with only top line */
             transition: clip-path 0.1s linear;
         }
 
-        /* SUNRAYS MANDALA BACKGROUND */
-        .sunrays-container {
+        /* ROTATING SUNRAYS BACKGROUND */
+        .sunrays {
             position: fixed;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 120vmax;
-            height: 120vmax;
+            width: 150vmax;
+            height: 150vmax;
             z-index: -1;
-            opacity: 0.1;
+            opacity: 0.08;
             background: repeating-conic-gradient(
                 from 0deg,
-                transparent 0deg 10deg,
-                var(--turmeric) 10deg 12deg
+                transparent 0deg 15deg,
+                var(--turmeric) 15deg 16deg
             );
-            animation: rotateSun 100s linear infinite;
+            animation: sunRotation 120s linear infinite;
         }
 
-        @keyframes rotateSun { to { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes sunRotation { to { transform: translate(-50%, -50%) rotate(360deg); } }
 
         /* HERO SECTION */
         .hero {
@@ -65,90 +65,73 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 10%;
         }
 
         .hero h1 {
-            font-size: clamp(4rem, 15vw, 10rem);
+            font-size: clamp(4rem, 15vw, 11rem);
             color: var(--kumkum);
-            font-family: 'Rozha One', serif;
-            animation: fadeInUp 1.5s var(--ease);
+            animation: bloomIn 1.8s var(--ease);
         }
 
-        /* MENU GRID */
-        .main-content { padding: 100px 10%; }
-        .section-title { font-family: 'Rozha One'; font-size: 3.5rem; color: var(--kumkum); text-align: center; margin-bottom: 60px; }
+        /* MENU GALLERY */
+        .content-wrap { padding: 100px 10%; }
+        .section-h { font-size: 3.5rem; color: var(--kumkum); text-align: center; margin-bottom: 70px; }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 50px;
         }
 
-        .card {
+        .jharokha-card {
             background: white;
             padding: 15px;
-            border-radius: 300px 300px 0 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            transition: 0.5s var(--ease);
+            border-radius: 400px 400px 0 0;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.06);
+            transition: 0.6s var(--ease);
             text-align: center;
         }
 
-        .card:hover { transform: translateY(-20px); border-bottom: 5px solid var(--turmeric); }
+        .jharokha-card:hover { transform: translateY(-25px); }
+        .img-container { width: 100%; aspect-ratio: 1/1.2; border-radius: 400px 400px 0 0; overflow: hidden; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; }
 
-        .img-box {
-            width: 100%;
-            aspect-ratio: 1/1.2;
-            border-radius: 300px 300px 0 0;
-            overflow: hidden;
-            background: #eee;
-        }
-
-        .img-box img { width: 100%; height: 100%; object-fit: cover; }
-
-        .card-body { padding: 30px 10px; }
-        .card-body h3 { font-size: 2rem; color: var(--kumkum); margin-bottom: 15px; }
-
-        /* SIGNATURE DISH SECTION */
-        .signature-dish {
-            background: var(--kumkum);
-            color: white;
-            margin: 50px 20px;
-            padding: 100px 10%;
+        /* SIGNATURE SECTION: CHICKEN HANDI */
+        .sig-dish {
+            background: var(--ink);
+            color: var(--parchment);
+            margin: 100px 20px;
+            padding: 80px 8%;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
+            position: relative;
         }
 
-        .sig-img { width: 100%; border: 10px solid var(--turmeric); }
-        .sig-text h2 { font-size: 4rem; color: var(--turmeric); margin-bottom: 20px; }
+        .sig-dish img { width: 100%; border: 8px solid var(--turmeric); outline: 2px solid var(--turmeric); outline-offset: 10px; }
+        .sig-info h2 { font-size: 4rem; color: var(--turmeric); margin-bottom: 25px; }
 
-        /* BRANCH STAMPS */
-        .branches {
+        /* BRANCHES */
+        .branch-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             padding: 80px 10%;
         }
 
-        .stamp {
-            border: 2px dashed var(--kumkum);
-            padding: 40px;
-            transition: 0.4s;
+        .stamp-box { border: 2px dashed var(--kumkum); padding: 40px; transition: 0.4s; }
+        .stamp-box:hover { background: var(--kumkum); color: var(--turmeric); }
+
+        @keyframes bloomIn {
+            from { opacity: 0; transform: scale(0.9) translateY(40px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        .stamp:hover { background: var(--kumkum); color: var(--turmeric); }
-
-        footer { text-align: center; padding: 50px; background: #000; color: #444; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        footer { text-align: center; padding: 60px; background: #000; color: #444; letter-spacing: 3px; }
 
         @media (max-width: 900px) {
-            .signature-dish { grid-template-columns: 1fr; text-align: center; }
+            .sig-dish { grid-template-columns: 1fr; text-align: center; }
             .hero h1 { font-size: 5rem; }
         }
     </style>
@@ -157,83 +140,85 @@
 
     <div id="scroll-border"></div>
 
-    <div class="sunrays-container"></div>
+    <div class="sunrays"></div>
 
     <section class="hero">
-        <p class="display" style="letter-spacing: 15px; opacity: 0.5;">SINCE 2021</p>
+        <p class="display" style="letter-spacing: 15px; opacity: 0.4; color: var(--kumkum);">ESTD 2021</p>
         <h1 class="marathi">हॉटेल सम्राट</h1>
-        <p class="marathi" style="font-size: 1.5rem; margin-top: 10px; color: var(--kumkum);">अस्सल चवीचा राजेशाही वारसा</p>
+        <p class="marathi" style="font-size: 1.6rem; margin-top: 15px; border-top: 2px solid var(--turmeric); padding-top: 10px;">अस्सल परंपरेचा राजेशाही स्वाद</p>
     </section>
 
-    <div class="main-content">
-        <h2 class="section-title">आमचे खास पदार्थ</h2>
+    <main class="content-wrap">
+        <h2 class="section-h display">Signature Menu</h2>
         <div class="menu-grid">
-            <div class="card">
-                <div class="img-box"><img src="mutton-malvani.jpg" alt="Malvani"></div>
-                <div class="card-body">
-                    <h3 class="marathi">मटण मालवणी</h3>
-                    <p>कोकणी मसाल्यांची जादू आणि अस्सल गावरान चव।</p>
+            <div class="jharokha-card">
+                <div class="img-container"><img src="mutton-malvani.jpg" alt="Malvani"></div>
+                <div class="card-body" style="padding: 25px 10px;">
+                    <h3 class="marathi" style="font-size: 2rem; color: var(--kumkum);">मटण मालवणी</h3>
+                    <p>कोकणी मसाल्यांचा आणि गावरान चवीचा अप्रतिम संगम।</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="img-box"><img src="murg-mussalam.webp" alt="Murg Mussalam"></div>
-                <div class="card-body">
-                    <h3 class="marathi">मुर्ग मुसल्लम</h3>
-                    <p>शाही पद्धतीने शिजवलेले लज्जतदार चिकन।</p>
+            <div class="jharokha-card">
+                <div class="img-container"><img src="murg-mussalam.webp" alt="Murg Mussalam"></div>
+                <div class="card-body" style="padding: 25px 10px;">
+                    <h3 class="marathi" style="font-size: 2rem; color: var(--kumkum);">मुर्ग मुसल्लम</h3>
+                    <p>शाही लज्जत आणि चवीचा एक राजेशाही अनुभव।</p>
                 </div>
             </div>
-            <div class="card">
-                <div class="img-box"><img src="Tandoori-Chicken-Recipe.jpg" alt="Tandoor"></div>
-                <div class="card-body">
-                    <h3 class="marathi">व्हाईट तंदूर</h3>
-                    <p>मखमली कबाबचा मलाईदार आणि ज्यूसी स्वाद।</p>
+            <div class="jharokha-card">
+                <div class="img-container"><img src="Tandoori-Chicken-Recipe.jpg" alt="Tandoor"></div>
+                <div class="card-body" style="padding: 25px 10px;">
+                    <h3 class="marathi" style="font-size: 2rem; color: var(--kumkum);">व्हाईट तंदूर</h3>
+                    <p>मखमली कबाबचा मलाईदार और ज्यूसी स्वाद।</p>
                 </div>
             </div>
+        </div>
+    </main>
+
+    <section class="sig-dish">
+        <div class="sig-img">
+            <img src="chicken-handi.jpg" alt="Chicken Handi">
+        </div>
+        <div class="sig-info">
+            <h2 class="marathi">चिकन हंडी</h2>
+            <p class="marathi" style="font-size: 1.3rem; line-height: 1.8; opacity: 0.9;">
+                खास सम्राट मसाल्यांमध्ये आणि मातीच्या भांड्यात मंद आचेवर शिजवलेली चिकन हंडी। आमची सर्वात जास्त पसंतीची आणि चविष्ट डिश।
+            </p>
+            <div style="margin-top: 40px; font-weight: 600; color: var(--turmeric); letter-spacing: 2px;">★ HIGHLY RECOMMENDED ★</div>
+        </div>
+    </section>
+
+    <div class="branch-grid">
+        <div class="stamp-box">
+            <h4 class="display" style="margin-bottom: 15px;">BRANCH I</h4>
+            <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव।</p>
+            <p style="margin-top: 20px; font-weight: bold; color: var(--kumkum);">📞 9011390365</p>
+        </div>
+        <div class="stamp-box">
+            <h4 class="display" style="margin-bottom: 15px;">BRANCH II</h4>
+            <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव।</p>
+            <p style="margin-top: 20px; font-weight: bold; color: var(--kumkum);">📞 9623575702</p>
+        </div>
+        <div class="stamp-box" style="border-color: #2ecc71;">
+            <p style="color: #2ecc71; font-weight: bold; font-size: 0.8rem; margin-bottom: 10px;">PURE VEGETARIAN</p>
+            <h4 class="display" style="margin-bottom: 15px;">BRANCH III</h4>
+            <p class="marathi">मुगाव फाटा, ल्हासुर्णे, सातारा-पंढरपूर रोड।</p>
+            <p style="margin-top: 20px; font-weight: bold; color: var(--kumkum);">📞 9604812425</p>
         </div>
     </div>
 
-    <section class="signature-dish">
-        <div class="sig-img">
-            <img src="chicken-handi.jpg" alt="Chicken Handi" style="width: 100%; display: block;">
-        </div>
-        <div class="sig-text">
-            <h2 class="marathi">चिकन हंडी</h2>
-            <p class="marathi" style="font-size: 1.2rem; line-height: 1.8;">मातीच्या भांड्यात मंद आचेवर शिजवलेले चिकन आणि आमचे खास 'सम्राट' मसाले। एकदा खाल तर चव विसरणार नाही।</p>
-            <p style="margin-top: 30px; border-left: 4px solid var(--turmeric); padding-left: 20px;">Chef's Special Recommended</p>
-        </div>
-    </section>
-
-    <section class="branches">
-        <div class="stamp">
-            <h4 class="display">BRANCH I</h4>
-            <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव।</p>
-            <p style="margin-top: 15px; color: var(--kumkum); font-weight: bold;">📞 9011390365</p>
-        </div>
-        <div class="stamp">
-            <h4 class="display">BRANCH II</h4>
-            <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव।</p>
-            <p style="margin-top: 15px; color: var(--kumkum); font-weight: bold;">📞 9623575702</p>
-        </div>
-        <div class="stamp" style="border-color: #2ecc71;">
-            <p style="color: #2ecc71; font-weight: bold;">PURE VEG</p>
-            <h4 class="display">BRANCH III</h4>
-            <p class="marathi">मुगाव फाटा, ल्हासुर्णे, सातारा-पंढरपूर रोड।</p>
-            <p style="margin-top: 15px; color: var(--kumkum); font-weight: bold;">📞 9604812425</p>
-        </div>
-    </section>
-
     <footer>
-        © 2026 HOTEL SAMRAT GROUP | SATARA, MH
+        HOTEL SAMRAT GROUP — SATARA, MAHARASHTRA
     </footer>
 
     <script>
-        // SCROLL BORDER ANIMATION LOGIC
+        // SCRIPT FOR DYNAMIC BORDER PROGRESSION
         window.onscroll = function() {
             let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             let scrolled = (winScroll / height) * 100;
             
-            // जैसे-जैसे स्क्रॉल होगा, इनसेट की वैल्यू कम होगी (यानी बॉर्डर बढ़ेगा)
+            // Adjust clip-path based on scroll percentage
             document.getElementById("scroll-border").style.clipPath = `inset(0 0 ${100 - scrolled}% 0)`;
         };
     </script>

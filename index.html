@@ -76,8 +76,21 @@
             padding: 0 10%;
         }
 
-        .hero h1 { font-size: clamp(4rem, 15vw, 10rem); color: var(--kumkum); line-height: 0.9; margin-bottom: 20px; }
-        .hero-sub { font-size: 1.5rem; color: var(--kumkum); border-top: 2px solid var(--turmeric); padding-top: 10px; }
+        .hero h1 { 
+            font-size: clamp(3.5rem, 12vw, 10rem); 
+            color: var(--kumkum); 
+            line-height: 1.1; 
+            margin-top: 20px; /* मोबाइल पर ओवरलैप रोकने के लिए गैप */
+        }
+        
+        .estd-text {
+            letter-spacing: 15px; 
+            opacity: 0.6; 
+            color: var(--kumkum);
+            display: block;
+        }
+
+        .hero-sub { font-size: 1.5rem; color: var(--kumkum); border-top: 2px solid var(--turmeric); padding-top: 15px; margin-top: 20px; }
 
         /* STORY SECTION */
         .story { padding: 100px 15%; text-align: center; background: rgba(128, 0, 0, 0.03); }
@@ -127,7 +140,7 @@
         /* BRANCHES */
         .branches { padding: 100px 10%; background: var(--ink); color: var(--parchment); }
         .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .stamp { border: 1px dashed var(--turmeric); padding: 40px; transition: 0.4s; }
+        .stamp { border: 1px dashed var(--turmeric); padding: 40px; transition: 0.4s; height: 100%; }
         .stamp:hover { background: #222; border-color: white; }
         .stamp h4 { font-size: 1.8rem; color: var(--turmeric); margin-bottom: 15px; }
 
@@ -135,8 +148,10 @@
 
         @media (max-width: 900px) {
             .menu-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 5rem; }
+            .hero h1 { font-size: 4rem; margin-top: 15px; }
+            .hero-sub { font-size: 1.1rem; }
             .story { padding: 80px 5%; }
+            .estd-text { letter-spacing: 8px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -146,14 +161,14 @@
     <a href="tel:9011390365" class="call-btn">📞</a>
 
     <section class="hero">
-        <p class="display" style="letter-spacing: 15px; opacity: 0.5; color: var(--kumkum);">ESTD 2021</p>
+        <span class="display estd-text">ESTD 2021</span>
         <h1 class="marathi">हॉटेल सम्राट</h1>
         <p class="marathi hero-sub">परंपरेचा राजेशाही स्वाद आणि अस्सल गावरान चव</p>
     </section>
 
     <section class="story">
         <h2 class="marathi">आमची परंपरा</h2>
-        <p class="marathi">साताऱ्याच्या मातीत २०२१ मध्ये 'हॉटेल सम्राट'ची पायाभरणी झाली. आमचे ध्येय केवळ उत्तम जेवण देणे नाही, तर आपल्या महाराष्ट्राचा अस्सल मसाल्यांचा वारसा जपणे हे आहे. ताज्या मसाल्यांपासून तयार केलेली प्रत्येक डिश तुम्हाला एका राजेशाही मेजवानीचा अनुभव देईल. खवय्यांच्या समाधानासाठी आम्ही कटिबद्ध आहोत.</p>
+        <p class="marathi">साताऱ्याच्या मातीत २०२१ मध्ये 'हॉटेल सम्राट'ची पायाभरणी झाली। आमचे ध्येय केवळ उत्तम जेवण देणे नाही, तर आपल्या महाराष्ट्राचा अस्सल मसाल्यांचा वारसा जपणे हे आहे। ताज्या मसाल्यांपासून तयार केलेली प्रत्येक डिश तुम्हाला एका राजेशाही मेजवानीचा अनुभव देईल। खवय्यांच्या समाधानासाठी आम्ही कटिबद्ध आहोत।</p>
     </section>
 
     <section class="menu-section">
@@ -199,7 +214,7 @@
             <p>Years of Legacy</p>
         </div>
         <div class="stat-box">
-            <h4 class="display">50k+</h4>
+            <h4 class="display">10k+</h4>
             <p>Happy Guests</p>
         </div>
         <div class="stat-box">
@@ -225,7 +240,7 @@
                 <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव, सातारा।</p>
                 <p style="margin-top: 20px; color: var(--turmeric); font-weight: 600;">📞 9623575702</p>
             </div>
-            <div class="stamp" style="border-style: double; border-width: 4px;">
+            <div class="stamp">
                 <p style="color: #2ecc71; font-weight: bold; margin-bottom: 10px;">SHUDDHA SHAKAHARI</p>
                 <h4>शाखा क्र. ०३</h4>
                 <p class="marathi">मुगाव फाटा, ल्हासुर्णे, सातारा-पंढरपूर रोड। अस्सल शाकाहारी जेवण।</p>

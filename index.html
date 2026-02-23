@@ -11,35 +11,40 @@
             --kumkum: #800000;
             --turmeric: #FFB800;
             --ink: #262626;
-            --border-style: 4px double var(--kumkum);
             --ease-heavy: cubic-bezier(0.7, 0, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* मुख्य बॉडी को Relative किया ताकि बॉर्डर पूरे पेज पर फैले */
         body {
             background-color: var(--parchment);
             color: var(--ink);
             font-family: 'Poppins', sans-serif;
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            position: relative;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
         .marathi { font-family: 'Tiro Devanagari Marathi', serif; }
         .display { font-family: 'Rozha One', serif; }
 
-        /* Page Border Decoration */
+        /* SCROLLABLE BORDER: अब यह पूरे पेज की लंबाई के साथ बढ़ेगा */
         .page-frame {
-            position: fixed;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
-            border: var(--border-style);
+            position: absolute;
+            top: 15px;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            border: 5px double var(--kumkum);
             pointer-events: none;
-            z-index: 1000;
+            z-index: 50;
         }
 
-        /* Hero: The Grand Entrance */
+        /* Hero Section */
         .hero {
-            height: 90vh;
+            height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -50,8 +55,10 @@
 
         .mandala-bg {
             position: absolute;
-            width: 700px;
-            height: 700px;
+            width: 80vw;
+            height: 80vw;
+            max-width: 600px;
+            max-height: 600px;
             border: 1px dashed var(--turmeric);
             border-radius: 50%;
             opacity: 0.15;
@@ -59,140 +66,143 @@
         }
 
         .hero h1 {
-            font-size: clamp(4rem, 15vw, 10rem);
+            font-size: clamp(3.5rem, 12vw, 9rem);
             color: var(--kumkum);
             animation: bloom 1.2s var(--ease-heavy);
+            z-index: 2;
         }
 
-        /* Menu: Jharokha Style Cards */
+        /* Menu Section */
         .menu-grid {
-            padding: 100px 10%;
+            padding: 50px 8% 100px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 10;
         }
 
         .jharokha-card {
-            background: white;
-            padding: 15px;
-            border-radius: 200px 200px 0 0;
-            box-shadow: 0 20px 40px rgba(128,0,0,0.1);
-            transition: 0.5s var(--ease-heavy);
+            background: #fff;
+            padding: 10px;
+            border-radius: 500px 500px 0 0; /* Arch */
+            box-shadow: 0 15px 40px rgba(128,0,0,0.08);
             text-align: center;
+            border-bottom: 6px solid var(--kumkum);
+            transition: 0.5s var(--ease-heavy);
         }
 
-        .jharokha-card:hover { transform: translateY(-20px); }
+        .jharokha-card:hover { transform: translateY(-15px); }
 
         .img-box {
             width: 100%;
-            aspect-ratio: 1/1.3;
-            border-radius: 180px 180px 0 0;
+            aspect-ratio: 1/1.2;
+            border-radius: 500px 500px 0 0;
             overflow: hidden;
-            margin-bottom: 25px;
         }
 
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.8s;
-        }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        .jharokha-card:hover img { transform: scale(1.1); }
+        .info-panel { padding: 25px 15px; }
+        .info-panel h3 { font-size: 2rem; color: var(--kumkum); margin-bottom: 8px; }
 
-        .item-title { font-size: 2.2rem; color: var(--kumkum); margin-bottom: 10px; }
-
-        /* Branch "Stamps" */
+        /* Branches */
         .branches {
             background: var(--ink);
             color: var(--parchment);
+            margin: 0 15px; /* बॉर्डर के अंदर रखने के लिए */
             padding: 80px 10%;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            gap: 30px;
         }
 
-        .stamp {
-            border: 1px dashed var(--turmeric);
-            padding: 40px;
+        .branch-item {
+            border: 1px solid rgba(255, 184, 0, 0.3);
+            padding: 30px;
             position: relative;
             transition: 0.3s;
         }
 
-        .stamp:hover { background: #333; }
-        .stamp h4 { color: var(--turmeric); font-family: 'Rozha One', serif; font-size: 1.5rem; margin-bottom: 15px; }
-        .veg-icon { color: #2ecc71; position: absolute; top: 20px; right: 20px; font-size: 1.5rem; }
+        .branch-item:hover { border-color: var(--turmeric); background: rgba(255,255,255,0.03); }
+        .branch-item h4 { color: var(--turmeric); font-family: 'Rozha One', serif; margin-bottom: 15px; }
+        .veg-tag { color: #2ecc71; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
+
+        footer {
+            background: var(--ink);
+            margin: 0 15px 15px;
+            text-align: center;
+            padding: 30px;
+            color: rgba(252,245,229,0.2);
+            font-size: 0.75rem;
+        }
 
         @keyframes rotate { to { transform: rotate(360deg); } }
         @keyframes bloom {
-            from { opacity: 0; transform: scale(0.9) translateY(30px); }
+            from { opacity: 0; transform: scale(0.95) translateY(20px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 4.5rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="page-frame"></div>
+    <div class="page-frame"></div>
 
-<section class="hero">
-    <div class="mandala-bg"></div>
-    <p class="display" style="letter-spacing: 10px; color: var(--kumkum); opacity: 0.6;">ESTD 2021</p>
-    <h1 class="marathi">हॉटेल सम्राट</h1>
-    <p class="marathi" style="font-size: 1.5rem; border-top: 2px solid var(--turmeric); padding-top: 10px;">परंपरेचा राजेशाही थाट</p>
-</section>
+    <section class="hero">
+        <div class="mandala-bg"></div>
+        <p class="display" style="color: var(--kumkum); opacity: 0.5; letter-spacing: 8px;">ESTD 2021</p>
+        <h1 class="marathi">हॉटेल सम्राट</h1>
+        <p class="marathi" style="color: var(--ink); font-size: 1.2rem; letter-spacing: 3px;">अस्सल परंपरेचा राजेशाही थाट</p>
+    </section>
 
-<main class="menu-grid">
-    <div class="jharokha-card">
-        <div class="img-box">
-            <img src="mutton-malvani.jpg" alt="Malvani Food">
+    <main class="menu-grid">
+        <div class="jharokha-card">
+            <div class="img-box"><img src="mutton-malvani.jpg" alt="Malvani"></div>
+            <div class="info-panel">
+                <h3 class="marathi">मालवणी स्वाद</h3>
+                <p>ताजी मासळी आणि कोकणी मसाल्यांचा मेजवानी।</p>
+            </div>
         </div>
-        <h3 class="marathi item-title">मालवणी स्वाद</h3>
-        <p>अस्सल कोकणी मसाल्यांनी सजलेली मालवणी मेजवानी।</p>
-    </div>
 
-    <div class="jharokha-card">
-        <div class="img-box">
-            <img src="murg-mussalam.webp" alt="Murg Mussalam">
+        <div class="jharokha-card">
+            <div class="img-box"><img src="murg-mussalam.webp" alt="Murg Mussalam"></div>
+            <div class="info-panel">
+                <h3 class="marathi">मुर्ग मुसल्लम</h3>
+                <p>शाही लज्जत आणि चवीचा अनोखा संगम।</p>
+            </div>
         </div>
-        <h3 class="marathi item-title">मुर्ग मुसल्लम</h3>
-        <p>शाही मुघलाई परंपरेचा एक लज्जतदार अनुभव।</p>
-    </div>
 
-    <div class="jharokha-card">
-        <div class="img-box">
-            <img src="Tandoori-Chicken-Recipe.jpg" alt="Tandoori Chicken">
+        <div class="jharokha-card">
+            <div class="img-box"><img src="Tandoori-Chicken-Recipe.jpg" alt="Tandoori"></div>
+            <div class="info-panel">
+                <h3 class="marathi">व्हाईट तंदूर</h3>
+                <p>मखमली कबाब आणि कोळशावरचा भाजलेला स्वाद।</p>
+            </div>
         </div>
-        <h3 class="marathi item-title">व्हाईट तंदूर</h3>
-        <p>मखमली कबाब आणि कोळशावर भाजलेला अस्सल स्वाद।</p>
-    </div>
-</main>
+    </main>
 
-<section class="branches">
-    <div class="stamp">
-        <h4>शाखा क्र. ०१</h4>
-        <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव।</p>
-        <p style="margin-top: 15px; color: var(--turmeric);">📞 9011390365</p>
-    </div>
-    <div class="stamp">
-        <h4>शाखा क्र. ०२</h4>
-        <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव।</p>
-        <p style="margin-top: 15px; color: var(--turmeric);">📞 9623575702</p>
-    </div>
-    <div class="stamp">
-        <span class="veg-icon">●</span>
-        <h4>शाखा क्र. ०३</h4>
-        <p class="marathi">मुगाव फाटा, ल्हासुर्णे। शुद्ध शाकाहारी भोजन।</p>
-        <p style="margin-top: 15px; color: var(--turmeric);">📞 9604812425</p>
-    </div>
-</section>
+    <section class="branches">
+        <div class="branch-item">
+            <h4>शाखा क्र. ०१</h4>
+            <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव।</p>
+            <p style="margin-top: 15px; color: var(--turmeric);">📞 9011390365</p>
+        </div>
+        <div class="branch-item">
+            <h4>शाखा क्र. ०२</h4>
+            <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव।</p>
+            <p style="margin-top: 15px; color: var(--turmeric);">📞 9623575702</p>
+        </div>
+        <div class="branch-item">
+            <p class="veg-tag">शुद्ध शाकाहारी</p>
+            <h4>शाखा क्र. ०३</h4>
+            <p class="marathi">मुगाव फाटा, ल्हासुर्णे। सातारा - पंढरपूर रोड।</p>
+            <p style="margin-top: 15px; color: var(--turmeric);">📞 9604812425</p>
+        </div>
+    </section>
 
-<footer style="background: var(--ink); text-align: center; padding: 40px; color: rgba(252,245,229,0.2); font-size: 0.8rem;">
-    © 2026 हॉटेल सम्राट | CULINARY HERITAGE OF INDIA
-</footer>
+    <footer>
+        © 2026 हॉटेल सम्राट | CULINARY HERITAGE
+    </footer>
 
 </body>
 </html>

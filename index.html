@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>हॉटेल सम्राट | शाही मेजवानी</title>
+    <title>हॉटेल सम्राट | शाही मेजवानी आणि परंपरा</title>
     <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Tiro+Devanagari+Marathi&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -42,7 +42,7 @@
 
         @keyframes sunRotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-        /* HERO SECTION WITH ANIMATION */
+        /* HERO SECTION WITH STAGGERED REVEAL */
         .hero {
             height: 100vh;
             display: flex;
@@ -53,7 +53,6 @@
             padding: 0 10%;
         }
 
-        /* 1. ESTD 2021 Animation */
         .estd-text {
             display: block;
             letter-spacing: 12px;
@@ -64,7 +63,6 @@
             animation-delay: 0.2s;
         }
 
-        /* 2. Hotel Samrat Name Animation (Bloom Effect) */
         .hero h1 {
             font-size: clamp(3.5rem, 12vw, 9rem);
             color: var(--kumkum);
@@ -76,7 +74,6 @@
             animation-delay: 0.5s;
         }
 
-        /* 3. Subtext Animation (Typing/Reveal Effect) */
         .hero-sub {
             font-size: 1.5rem;
             color: var(--kumkum);
@@ -85,26 +82,67 @@
             opacity: 0;
             animation: fadeInUp 1s var(--ease) forwards;
             animation-delay: 1.2s;
-            max-width: 600px;
+            max-width: 700px;
         }
 
-        /* ANIMATION KEYFRAMES */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 0.6; transform: translateY(0); }
+        /* KEYFRAMES FOR REVEAL */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 0.6; transform: translateY(0); } }
+        @keyframes bloomIn { from { opacity: 0; filter: blur(15px); transform: scale(0.9); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* STORY SECTION */
+        .story { padding: 100px 15%; text-align: center; background: rgba(128, 0, 0, 0.03); }
+        .story h2 { font-size: 3rem; color: var(--kumkum); margin-bottom: 30px; }
+        .story p { font-size: 1.2rem; line-height: 1.8; opacity: 0.8; max-width: 850px; margin: 0 auto; }
+
+        /* SIGNATURE MENU (2x2 GRID) */
+        .menu-section { padding: 100px 10%; }
+        .section-title { font-size: 3.5rem; color: var(--kumkum); text-align: center; margin-bottom: 60px; }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
         }
 
-        @keyframes bloomIn {
-            from { opacity: 0; filter: blur(15px); transform: scale(0.9); }
-            to { opacity: 1; filter: blur(0); transform: scale(1); }
+        .jharokha {
+            background: white;
+            padding: 20px;
+            border-radius: 500px 500px 0 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+            transition: 0.5s var(--ease);
+            text-align: center;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .jharokha:hover { transform: translateY(-15px); }
+        .img-wrap { width: 100%; aspect-ratio: 1/1; border-radius: 500px 500px 0 0; overflow: hidden; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+        .jharokha:hover img { transform: scale(1.1); }
+        .item-desc { padding: 25px 10px; }
+        .item-desc h3 { font-size: 2.2rem; color: var(--kumkum); margin-bottom: 10px; }
+
+        /* STATS STRIP */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            background: var(--kumkum);
+            color: var(--turmeric);
+            padding: 80px 10%;
+            text-align: center;
+            margin: 50px 0;
         }
 
-        /* FLOATING CALL ICON */
+        .stat-box h4 { font-size: 3.5rem; margin-bottom: 5px; }
+        .stat-box p { color: white; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
+
+        /* BRANCHES */
+        .branches { padding: 100px 10%; background: var(--ink); color: var(--parchment); }
+        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .stamp { border: 1px dashed var(--turmeric); padding: 40px; transition: 0.4s; }
+        .stamp:hover { background: #222; }
+        .stamp h4 { font-size: 1.8rem; color: var(--turmeric); margin-bottom: 15px; }
+
+        /* CALL BUTTON */
         .call-btn {
             position: fixed;
             bottom: 30px;
@@ -126,20 +164,10 @@
 
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        /* REST OF THE SECTIONS */
-        .menu-section { padding: 100px 10%; }
-        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-        .jharokha { background: white; padding: 20px; border-radius: 500px 500px 0 0; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.06); }
-        .img-wrap { width: 100%; aspect-ratio: 1/1; border-radius: 500px 500px 0 0; overflow: hidden; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        .branches { padding: 100px 10%; background: var(--ink); color: var(--parchment); }
-        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .stamp { border: 1px dashed var(--turmeric); padding: 40px; }
-
-        @media (max-width: 800px) {
-            .hero h1 { font-size: 4rem; margin-top: 15px; }
-            .hero-sub { font-size: 1.1rem; }
+        @media (max-width: 900px) {
             .menu-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4rem; }
+            .story { padding: 80px 5%; }
         }
     </style>
 </head>
@@ -154,47 +182,88 @@
         <p class="marathi hero-sub">परंपरेचा राजेशाही स्वाद आणि अस्सल गावरान चव</p>
     </section>
 
+    <section class="story">
+        <h2 class="marathi">आमची परंपरा</h2>
+        <p class="marathi">साताऱ्याच्या मातीत २०२१ मध्ये 'हॉटेल सम्राट'ची पायाभरणी झाली. आमचे ध्येय केवळ उत्तम जेवण देणे नाही, तर आपल्या महाराष्ट्राचा अस्सल मसाल्यांचा वारसा जपणे हे आहे. ताज्या मसाल्यांपासून तयार केलेली प्रत्येक डिश तुम्हाला एका राजेशाही मेजवानीचा अनुभव देईल. खवय्यांच्या समाधानासाठी आम्ही कटिबद्ध आहोत.</p>
+    </section>
+
     <section class="menu-section">
+        <h2 class="section-title display">Signature Menu</h2>
         <div class="menu-grid">
             <div class="jharokha">
                 <div class="img-wrap"><img src="mutton-malvani.jpg" alt="Mutton Malvani"></div>
-                <h3 class="marathi" style="margin-top: 20px; color: var(--kumkum);">मटण मालवणी</h3>
+                <div class="item-desc">
+                    <h3 class="marathi">मटण मालवणी</h3>
+                    <p>कोकणच्या किनाऱ्यावरील अस्सल मसाल्यांचा वापर करून तयार केलेली झणझणीत मालवणी थाळी.</p>
+                </div>
             </div>
             <div class="jharokha">
                 <div class="img-wrap"><img src="murg-mussalam.webp" alt="Murg Mussalam"></div>
-                <h3 class="marathi" style="margin-top: 20px; color: var(--kumkum);">मुर्ग मुसल्लम</h3>
+                <div class="item-desc">
+                    <h3 class="marathi">मुर्ग मुसल्लम</h3>
+                    <p>शाही मुघलाई मसाल्यांमध्ये शिजवलेले लज्जतदार चिकन, जे राजेशाही थाटाचे प्रतीक आहे.</p>
+                </div>
             </div>
             <div class="jharokha">
                 <div class="img-wrap"><img src="chicken-handi.jpg" alt="Chicken Handi"></div>
-                <h3 class="marathi" style="margin-top: 20px; color: var(--kumkum);">चिकन हंडी</h3>
+                <div class="item-desc">
+                    <h3 class="marathi">चिकन हंडी</h3>
+                    <p>मातीच्या भांड्यात मंद आचेवर शिजवलेली आणि सम्राट मसाल्यांची फोडणी दिलेली चविष्ट चिकन हंडी.</p>
+                </div>
             </div>
             <div class="jharokha">
                 <div class="img-wrap"><img src="Tandoori-Chicken-Recipe.jpg" alt="White Tandoor"></div>
-                <h3 class="marathi" style="margin-top: 20px; color: var(--kumkum);">व्हाईट तंदूर</h3>
+                <div class="item-desc">
+                    <h3 class="marathi">व्हाईट तंदूर</h3>
+                    <p>मखमली कबाब आणि कोळशावर भाजलेला अस्सल धुरकट स्वाद, जो जिभेवर रेंगाळत राईल.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-box">
+            <h4 class="display">05+</h4>
+            <p>Years of Legacy</p>
+        </div>
+        <div class="stat-box">
+            <h4 class="display">50k+</h4>
+            <p>Happy Guests</p>
+        </div>
+        <div class="stat-box">
+            <h4 class="display">03</h4>
+            <p>Prime Locations</p>
+        </div>
+        <div class="stat-box">
+            <h4 class="display">100%</h4>
+            <p>Authentic Spices</p>
         </div>
     </section>
 
     <section class="branches">
+        <h2 class="marathi" style="text-align: center; font-size: 3rem; color: var(--turmeric); margin-bottom: 50px;">आमच्या शाखा</h2>
         <div class="branch-grid">
             <div class="stamp">
                 <h4>शाखा क्र. ०१</h4>
-                <p class="marathi">कोरेगाव, सातारा। 📞 9011390365</p>
+                <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव.</p>
+                <p style="margin-top: 15px; color: var(--turmeric);">📞 9011390365</p>
             </div>
             <div class="stamp">
                 <h4>शाखा क्र. ०२</h4>
-                <p class="marathi">कोरेगाव रोड, सातारा। 📞 9623575702</p>
+                <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव.</p>
+                <p style="margin-top: 15px; color: var(--turmeric);">📞 9623575702</p>
             </div>
             <div class="stamp">
-                <p style="color: #2ecc71; font-weight: bold; margin-bottom: 5px;">SHUDDHA SHAKAHARI</p>
+                <p style="color: #2ecc71; font-weight: bold; margin-bottom: 10px;">SHUDDHA SHAKAHARI</p>
                 <h4>शाखा क्र. ०३</h4>
-                <p class="marathi">ल्हासुर्णे, सातारा। 📞 9604812425</p>
+                <p class="marathi">मुगाव फाटा, ल्हासुर्णे, सातारा-पंढरपूर रोड.</p>
+                <p style="margin-top: 15px; color: var(--turmeric);">📞 9604812425</p>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 40px; background: #000; text-align: center; color: #444;">
-        © 2026 हॉटेल सम्राट समूह | SATARA, MH
+    <footer style="padding: 40px; background: #000; text-align: center; color: #444; font-size: 0.8rem;">
+        © 2026 हॉटेल सम्राट समूह | AUTHENTICITY GUARANTEED | SATARA, MH
     </footer>
 
 </body>

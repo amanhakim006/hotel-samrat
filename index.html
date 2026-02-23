@@ -12,6 +12,7 @@
             --turmeric: #FFB800;
             --ink: #262626;
             --border-style: 4px double var(--kumkum);
+            --ease-heavy: cubic-bezier(0.7, 0, 0.3, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,141 +22,115 @@
             color: var(--ink);
             font-family: 'Poppins', sans-serif;
             background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            overflow-x: hidden;
         }
 
         .marathi { font-family: 'Tiro Devanagari Marathi', serif; }
         .display { font-family: 'Rozha One', serif; }
 
-        /* Traditional Border Framing */
+        /* Page Border Decoration */
         .page-frame {
             position: fixed;
-            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
             border: var(--border-style);
             pointer-events: none;
             z-index: 1000;
         }
 
-        /* Hero Section with Mandala Backsplash */
+        /* Hero: The Grand Entrance */
         .hero {
-            height: 100vh;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
 
         .mandala-bg {
             position: absolute;
-            width: 800px;
-            height: 800px;
-            background: repeating-conic-gradient(from 0deg, transparent 0deg 20deg, var(--turmeric) 20deg 21deg);
-            opacity: 0.05;
+            width: 700px;
+            height: 700px;
+            border: 1px dashed var(--turmeric);
             border-radius: 50%;
+            opacity: 0.15;
             animation: rotate 60s linear infinite;
         }
 
         .hero h1 {
-            font-size: clamp(4rem, 15vw, 12rem);
+            font-size: clamp(4rem, 15vw, 10rem);
             color: var(--kumkum);
-            line-height: 1;
-            z-index: 2;
-            animation: bloom 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: bloom 1.2s var(--ease-heavy);
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            color: var(--ink);
-            margin-top: 20px;
-            border-top: 2px solid var(--turmeric);
-            padding-top: 10px;
-            animation: bloom 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
-        }
-
-        /* Menu: The Jharokha (Window) Gallery */
-        .menu-section {
+        /* Menu: Jharokha Style Cards */
+        .menu-grid {
             padding: 100px 10%;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 60px;
         }
 
-        .jharokha {
-            position: relative;
-            padding: 20px;
+        .jharokha-card {
             background: white;
-            box-shadow: 0 10px 30px rgba(128,0,0,0.1);
-            border-radius: 200px 200px 0 0; /* Arch shape */
+            padding: 15px;
+            border-radius: 200px 200px 0 0;
+            box-shadow: 0 20px 40px rgba(128,0,0,0.1);
+            transition: 0.5s var(--ease-heavy);
             text-align: center;
-            transition: transform 0.4s ease;
         }
 
-        .jharokha:hover { transform: translateY(-15px); }
+        .jharokha-card:hover { transform: translateY(-20px); }
 
-        .img-container {
+        .img-box {
             width: 100%;
-            aspect-ratio: 1/1.2;
-            overflow: hidden;
+            aspect-ratio: 1/1.3;
             border-radius: 180px 180px 0 0;
+            overflow: hidden;
             margin-bottom: 25px;
         }
 
-        .img-container img {
+        .img-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(1.2) contrast(1.1);
+            transition: 0.8s;
         }
 
-        .item-name {
-            font-size: 2rem;
-            color: var(--kumkum);
-            margin-bottom: 10px;
-        }
+        .jharokha-card:hover img { transform: scale(1.1); }
 
-        /* Branches as "Stamp" Modules */
-        .branches-container {
-            padding: 80px 10%;
-            background-color: var(--ink);
+        .item-title { font-size: 2.2rem; color: var(--kumkum); margin-bottom: 10px; }
+
+        /* Branch "Stamps" */
+        .branches {
+            background: var(--ink);
             color: var(--parchment);
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
 
-        .branch-stamp {
-            flex: 1;
-            min-width: 250px;
+        .stamp {
             border: 1px dashed var(--turmeric);
-            padding: 30px;
+            padding: 40px;
             position: relative;
+            transition: 0.3s;
         }
 
-        .branch-stamp h3 { color: var(--turmeric); margin-bottom: 15px; }
+        .stamp:hover { background: #333; }
+        .stamp h4 { color: var(--turmeric); font-family: 'Rozha One', serif; font-size: 1.5rem; margin-bottom: 15px; }
+        .veg-icon { color: #2ecc71; position: absolute; top: 20px; right: 20px; font-size: 1.5rem; }
 
-        .veg-icon {
-            color: #2ecc71;
-            font-size: 2rem;
-            position: absolute;
-            top: 20px; right: 20px;
-        }
-
+        @keyframes rotate { to { transform: rotate(360deg); } }
         @keyframes bloom {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes rotate {
-            to { transform: rotate(360deg); }
+            from { opacity: 0; transform: scale(0.9) translateY(30px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 4rem; }
-            .branches-container { flex-direction: column; }
+            .hero h1 { font-size: 4.5rem; }
         }
     </style>
 </head>
@@ -165,71 +140,59 @@
 
 <section class="hero">
     <div class="mandala-bg"></div>
-    <p class="display">SINCE 2021</p>
+    <p class="display" style="letter-spacing: 10px; color: var(--kumkum); opacity: 0.6;">ESTD 2021</p>
     <h1 class="marathi">हॉटेल सम्राट</h1>
-    <p class="marathi">परंपरेचा अस्सल स्वाद</p>
+    <p class="marathi" style="font-size: 1.5rem; border-top: 2px solid var(--turmeric); padding-top: 10px;">परंपरेचा राजेशाही थाट</p>
 </section>
 
-<section class="menu-section">
-    <div class="jharokha">
-        <div class="img-container">
-            <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=600&q=80" alt="Malvani">
+<main class="menu-grid">
+    <div class="jharokha-card">
+        <div class="img-box">
+            <img src="mutton-malvani.jpg" alt="Malvani Food">
         </div>
-        <h3 class="marathi item-name">मालवणी स्वाद</h3>
-        <p>कोकणच्या किनाऱ्यावरून थेट तुमच्या ताटात.</p>
+        <h3 class="marathi item-title">मालवणी स्वाद</h3>
+        <p>अस्सल कोकणी मसाल्यांनी सजलेली मालवणी मेजवानी।</p>
     </div>
 
-    <div class="jharokha">
-        <div class="img-container">
-            <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80" alt="Murg Musallam">
+    <div class="jharokha-card">
+        <div class="img-box">
+            <img src="murg-mussalam.webp" alt="Murg Mussalam">
         </div>
-        <h3 class="marathi item-name">मुर्ग मुसल्लम</h3>
-        <p>शाही मसाल्यांची आणि हळुवार शिजवलेल्या मांसाची मेजवानी.</p>
+        <h3 class="marathi item-title">मुर्ग मुसल्लम</h3>
+        <p>शाही मुघलाई परंपरेचा एक लज्जतदार अनुभव।</p>
     </div>
 
-    <div class="jharokha">
-        <div class="img-container">
-            <img src="https://images.unsplash.com/photo-1626508065577-28df385844a9?auto=format&fit=crop&w=600&q=80" alt="White Tandoor">
+    <div class="jharokha-card">
+        <div class="img-box">
+            <img src="Tandoori-Chicken-Recipe.jpg" alt="Tandoori Chicken">
         </div>
-        <h3 class="marathi item-name">व्हाईट तंदूर</h3>
-        <p>मलाईदार कबाबचा एक अनोखा आणि मखमली अनुभव.</p>
+        <h3 class="marathi item-title">व्हाईट तंदूर</h3>
+        <p>मखमली कबाब आणि कोळशावर भाजलेला अस्सल स्वाद।</p>
     </div>
-</section>
+</main>
 
-<section class="branches-container">
-    <div class="branch-stamp">
-        <h3 class="display">KOREGAON I</h3>
-        <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव.</p>
+<section class="branches">
+    <div class="stamp">
+        <h4>शाखा क्र. ०१</h4>
+        <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव।</p>
         <p style="margin-top: 15px; color: var(--turmeric);">📞 9011390365</p>
     </div>
-    <div class="branch-stamp">
-        <h3 class="display">KOREGAON II</h3>
-        <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव.</p>
+    <div class="stamp">
+        <h4>शाखा क्र. ०२</h4>
+        <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव।</p>
         <p style="margin-top: 15px; color: var(--turmeric);">📞 9623575702</p>
     </div>
-    <div class="branch-stamp">
+    <div class="stamp">
         <span class="veg-icon">●</span>
-        <h3 class="display">VEGETARIAN</h3>
-        <p class="marathi">मुगाव फाटा, ल्हासुर्णे. अस्सल शाकाहारी जेवण.</p>
+        <h4>शाखा क्र. ०३</h4>
+        <p class="marathi">मुगाव फाटा, ल्हासुर्णे। शुद्ध शाकाहारी भोजन।</p>
         <p style="margin-top: 15px; color: var(--turmeric);">📞 9604812425</p>
     </div>
 </section>
 
-<footer style="text-align: center; padding: 50px; background: var(--ink); color: rgba(252, 245, 229, 0.3); font-size: 0.8rem; letter-spacing: 2px;">
-    TRADITION BEYOND BORDERS — HOTEL SAMRAT GROUP
+<footer style="background: var(--ink); text-align: center; padding: 40px; color: rgba(252,245,229,0.2); font-size: 0.8rem;">
+    © 2026 हॉटेल सम्राट | CULINARY HERITAGE OF INDIA
 </footer>
-
-<script>
-    // Smooth scrolling for a traditional "unfolding" feel
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-</script>
 
 </body>
 </html>

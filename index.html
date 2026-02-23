@@ -3,254 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Samrat - Royal Dining Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Khand:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Hotel Samrat | Distinction in Taste</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Martel:wght@400;700&family=Yantramanav:wght@300;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --royal-red: #9e1b1b;
-            --gold: #c5a059;
-            --dark: #121212;
-            --white: #ffffff;
+            --bg-dark: #121212;
+            --sindoor-red: #8B0000;
+            --clay-white: #E8E2D9;
+            --accent-gold: #AF924F;
+            --surface: #1A1A1A;
+            --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fafafa;
-            color: var(--dark);
+            background-color: var(--bg-dark);
+            color: var(--clay-white);
+            font-family: 'Yantramanav', sans-serif;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, .logo { font-family: 'Khand', sans-serif; }
+        h1, h2, h3 { font-family: 'Marcellus', serif; text-transform: uppercase; letter-spacing: 2px; }
+        .marathi { font-family: 'Martel', serif; }
 
-        /* Professional Navbar */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            padding: 15px 7%;
+        /* Background Depth */
+        .bg-grain {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(175, 146, 79, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 30px 6%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            border-bottom: 1px solid rgba(232, 226, 217, 0.1);
         }
 
-        .logo { 
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem; 
-            color: var(--royal-red);
-            letter-spacing: 2px;
-        }
+        .logo { font-size: 1.5rem; color: var(--accent-gold); border: 1px solid var(--accent-gold); padding: 5px 15px; }
 
-        .lang-btn {
-            background: var(--royal-red);
-            color: white;
-            border: 2px solid var(--gold);
-            padding: 10px 22px;
-            border-radius: 4px;
+        .lang-toggle {
+            background: transparent;
+            color: var(--clay-white);
+            border: 1px solid var(--clay-white);
+            padding: 8px 20px;
             cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s ease;
+            transition: 0.4s var(--ease-out);
         }
 
-        .lang-btn:hover { background: var(--gold); transform: translateY(-2px); }
+        .lang-toggle:hover { background: var(--clay-white); color: var(--bg-dark); }
 
-        /* Hero Section with Luxury Background */
+        /* Hero: Staggered Reveal */
         .hero {
-            height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
-                        url('http://googleusercontent.com/image_collection/image_retrieval/9186719762909257541_1');
-            background-size: cover;
-            background-position: center;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding-top: 80px;
+            padding: 0 10%;
         }
 
-        .hero h1 { 
-            font-size: 5rem; 
-            color: var(--gold); 
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
-            margin-bottom: 10px;
+        .hero h1 { font-size: clamp(3rem, 8vw, 6rem); line-height: 0.9; margin-bottom: 20px; animation: revealUp 1.2s var(--ease-out); }
+        .hero p { font-size: 1.2rem; color: var(--accent-gold); animation: revealUp 1.2s var(--ease-out) 0.2s backwards; }
+
+        /* Menu Grid */
+        .menu-section { padding: 100px 10%; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 60px; }
+
+        .item { 
+            position: relative; 
+            opacity: 0; 
+            transform: translateY(30px); 
+            animation: revealUp 1s var(--ease-out) forwards;
         }
 
-        .hero p { font-size: 1.5rem; letter-spacing: 3px; font-weight: 300; }
+        .item:nth-child(1) { animation-delay: 0.4s; }
+        .item:nth-child(2) { animation-delay: 0.6s; }
+        .item:nth-child(3) { animation-delay: 0.8s; }
 
-        /* Menu Section */
-        .menu-container { padding: 100px 7%; text-align: center; }
-        .section-title { font-size: 3rem; color: var(--royal-red); margin-bottom: 60px; }
-        .section-title span { color: var(--gold); }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+        .img-wrapper { 
+            overflow: hidden; 
+            aspect-ratio: 4/5; 
+            border: 1px solid rgba(232, 226, 217, 0.2);
+            filter: grayscale(0.3) contrast(1.1);
+            transition: 0.6s var(--ease-out);
         }
 
-        .menu-card {
-            background: white;
-            border-radius: 0;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            transition: 0.4s;
-            border: 1px solid #eee;
+        .img-wrapper:hover { filter: grayscale(0); border-color: var(--sindoor-red); }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease-out); }
+        .img-wrapper:hover img { transform: scale(1.05); }
+
+        .item-info { margin-top: 20px; border-left: 2px solid var(--sindoor-red); padding-left: 15px; }
+        .item-info h3 { color: var(--clay-white); font-size: 1.8rem; }
+
+        /* Branches - Brutalist Style */
+        .branches { padding: 100px 10%; background: #0a0a0a; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background-color: rgba(232, 226, 217, 0.1); }
+        .branch-card { background: var(--bg-dark); padding: 40px; }
+        .branch-card h4 { color: var(--accent-gold); margin-bottom: 15px; }
+        .veg-dot { width: 12px; height: 12px; background: #2ecc71; display: inline-block; margin-right: 10px; }
+
+        @keyframes revealUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .menu-card:hover { transform: translateY(-15px); border-color: var(--gold); }
-        .menu-card img { width: 100%; height: 300px; object-fit: cover; transition: 0.5s; }
-        .menu-card:hover img { transform: scale(1.05); }
-
-        .card-info { padding: 30px; border-top: 5px solid var(--royal-red); }
-        .card-info h3 { font-size: 2rem; margin-bottom: 10px; }
-        .card-info p { color: #666; font-size: 0.95rem; }
-
-        /* Branches */
-        .branches { background: var(--dark); color: white; padding: 80px 7%; }
-        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        
-        .branch-card {
-            padding: 40px;
-            border: 1px solid #333;
-            transition: 0.3s;
-            position: relative;
-        }
-
-        .branch-card:hover { background: #1a1a1a; border-color: var(--gold); }
-        .branch-card h3 { color: var(--gold); font-size: 1.8rem; margin-bottom: 15px; }
-        .branch-card p { font-size: 1rem; line-height: 1.8; opacity: 0.8; }
-        .veg-badge { color: #4CAF50; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; }
-
-        footer {
-            background: #000;
-            color: #555;
-            padding: 40px;
-            text-align: center;
-            font-size: 0.9rem;
-            border-top: 1px solid var(--gold);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3.5rem; }
-            .menu-grid { grid-template-columns: 1fr; }
+        @media (max-width: 900px) {
+            .branches { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-<header>
+<div class="bg-grain"></div>
+
+<nav>
     <div class="logo">SAMRAT</div>
-    <button class="lang-btn" onclick="translatePage()">English / मराठी</button>
-</header>
+    <button class="lang-toggle" onclick="toggle()">EN / MR</button>
+</nav>
 
 <section class="hero">
-    <h1 id="hero-title">हॉटेल सम्राट</h1>
-    <p id="hero-tag">अस्सल चवीचा राजेशाही थाट</p>
+    <p>ESTD. 2021 — SATARA</p>
+    <h1 id="main-h" class="marathi">हॉटेल सम्राट</h1>
 </section>
 
-<section class="menu-container">
-    <h2 class="section-title" id="menu-head">आमचे <span>खास पदार्थ</span></h2>
-    <div class="menu-grid">
-        <div class="menu-card">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/333401119873513137_0" alt="Malvani Thali">
-            <div class="card-info">
-                <h3 id="item1-t">मालवणी थाळी</h3>
-                <p id="item1-d">ताजी मासळी आणि कोकणी मसाल्यांचा अप्रतिम संगम.</p>
+<section class="menu-section">
+    <div class="grid">
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1610057099443-fde8c4d50f91?auto=format&fit=crop&w=800&q=80" alt="Malvani">
+            </div>
+            <div class="item-info">
+                <h3 id="m1">मालवणी थाळी</h3>
+                <p>Coastal soul on a platter.</p>
             </div>
         </div>
-
-        <div class="menu-card">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/10749516526495017737_0" alt="Murg Musallam">
-            <div class="card-info">
-                <h3 id="item2-t">मुर्ग मुसल्लम</h3>
-                <p id="item2-d">शाही मसाल्यात शिजवलेले लज्जतदार चिकन मुसल्लम.</p>
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1603894584714-70bc10fe8299?auto=format&fit=crop&w=800&q=80" alt="Murg Musallam">
+            </div>
+            <div class="item-info">
+                <h3 id="m2">मुर्ग मुसल्लम</h3>
+                <p>A Mughlai masterpiece.</p>
             </div>
         </div>
-
-        <div class="menu-card">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/11007707074463252099_0" alt="White Tandoor">
-            <div class="card-info">
-                <h3 id="item3-t">व्हाईट तंदूर</h3>
-                <p id="item3-d">क्रीमी आणि ज्यूसी व्हाईट तंदूरी कबाबचा नवा अनुभव.</p>
+        <div class="item">
+            <div class="img-wrapper">
+                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=800&q=80" alt="White Tandoor">
+            </div>
+            <div class="item-info">
+                <h3 id="m3">व्हाईट तंदूर</h3>
+                <p>Fire and silk.</p>
             </div>
         </div>
     </div>
 </section>
 
 <section class="branches">
-    <div class="branch-grid">
-        <div class="branch-card">
-            <h3 id="br1-t">शाखा ०१</h3>
-            <p id="br1-a">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव</p>
-            <p style="color: var(--gold); margin-top: 15px;">📞 9011390365</p>
-        </div>
-        <div class="branch-card">
-            <h3 id="br2-t">शाखा ०२</h3>
-            <p id="br2-a">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव</p>
-            <p style="color: var(--gold); margin-top: 15px;">📞 9623575702</p>
-        </div>
-        <div class="branch-card" style="border-top: 4px solid #4CAF50;">
-            <p class="veg-badge">SHUDDHA SHAKAHARI</p>
-            <h3 id="br3-t">शाखा ०३</h3>
-            <p id="br3-a">सातारा - पंढरपूर रोड, मुगाव फाटा ल्हासुर्णे</p>
-            <p style="color: var(--gold); margin-top: 15px;">📞 9604812425</p>
-        </div>
+    <div class="branch-card">
+        <h4>BRANCH I</h4>
+        <p id="b1">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी</p>
+    </div>
+    <div class="branch-card">
+        <h4>BRANCH II</h4>
+        <p id="b2">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे</p>
+    </div>
+    <div class="branch-card">
+        <h4>BRANCH III</h4>
+        <p><span class="veg-dot"></span> PURE VEGETARIAN</p>
+        <p id="b3">मुगाव फाटा, ल्हासुर्णे</p>
     </div>
 </section>
 
-<footer>
-    <p id="footer-txt">© 2026 Hotel Samrat | Quality & Taste Guaranteed</p>
-</footer>
-
 <script>
-    let currentLang = 'mr';
-    const langData = {
-        en: {
-            title: "Hotel Samrat", tag: "Royal Taste of Tradition",
-            mHead: "Our Special Menu",
-            i1t: "Malvani Thali", i1d: "Experience the magic of authentic Konkan spices.",
-            i2t: "Murg Musallam", i2d: "Juicy chicken cooked in royal Mughal style.",
-            i3t: "White Tandoor", i3d: "The creamy and tender taste of malai tandoor.",
-            b1t: "Branch 01", b1a: "Satara-Pandharpur Road, Koregaon",
-            b2t: "Branch 02", b2a: "Koregaon-Pusegaon Road, Koregaon",
-            b3t: "Branch 03", b3a: "Mugav Phata, Lhasurne",
-            foot: "© 2026 Hotel Samrat | Quality & Taste Guaranteed"
-        },
-        mr: {
-            title: "हॉटेल सम्राट", tag: "अस्सल चवीचा राजेशाही थाट",
-            mHead: "आमचे खास पदार्थ",
-            i1t: "मालवणी थाळी", i1d: "ताजी मासळी आणि कोकणी मसाल्यांचा अप्रतिम संगम.",
-            i2t: "मुर्ग मुसल्लम", i2d: "शाही मसाल्यात शिजवलेले लज्जतदार चिकन मुसल्लम.",
-            i3t: "व्हाईट तंदूर", i3d: "क्रीमी आणि ज्यूसी व्हाईट तंदूरी कबाबचा नवा अनुभव.",
-            b1t: "शाखा ०१", b1a: "सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव",
-            b2t: "शाखा ०२", b2a: "कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव",
-            b3t: "शाखा ०३", b3a: "सातारा - पंढरपूर रोड, मुगाव फाटा ल्हासुर्णे",
-            foot: "© 2026 हॉटेल सम्राट | गावरान चवीचा अनोखा अनुभव!"
-        }
-    };
-
-    function translatePage() {
-        currentLang = (currentLang === 'mr') ? 'en' : 'mr';
-        const d = langData[currentLang];
-        document.getElementById('hero-title').innerText = d.title;
-        document.getElementById('hero-tag').innerText = d.tag;
-        document.getElementById('menu-head').innerHTML = (currentLang === 'mr') ? "आमचे <span>खास पदार्थ</span>" : "Our <span>Special Menu</span>";
-        document.getElementById('item1-t').innerText = d.i1t;
-        document.getElementById('item1-desc') ? document.getElementById('item1-desc').innerText = d.i1d : null;
-        document.getElementById('item2-t').innerText = d.i2t;
-        document.getElementById('item3-t').innerText = d.i3t;
-        document.getElementById('br1-t').innerText = d.b1t;
-        document.getElementById('br1-a').innerText = d.b1a;
-        document.getElementById('br2-t').innerText = d.b2t;
-        document.getElementById('br2-a').innerText = d.b2a;
-        document.getElementById('br3-t').innerText = d.b3t;
-        document.getElementById('br3-a').innerText = d.b3a;
-        document.getElementById('footer-txt').innerText = d.foot;
+    let isMr = true;
+    function toggle() {
+        isMr = !isMr;
+        document.getElementById('main-h').innerText = isMr ? "हॉटेल सम्राट" : "HOTEL SAMRAT";
+        document.getElementById('m1').innerText = isMr ? "मालवणी थाळी" : "MALVANI THALI";
+        document.getElementById('m2').innerText = isMr ? "मुर्ग मुसल्लम" : "MURG MUSALLAM";
+        document.getElementById('m3').innerText = isMr ? "व्हाईट तंदूर" : "WHITE TANDOOR";
     }
 </script>
 

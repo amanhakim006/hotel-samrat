@@ -89,9 +89,9 @@
         @keyframes bloomIn { from { opacity: 0; filter: blur(15px); transform: scale(0.9); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* RESERVATION FORM SECTION */
+        /* RESERVATION FORM */
         .booking-section {
-            padding: 100px 10%;
+            padding: 80px 10%;
             background: var(--kumkum);
             color: var(--parchment);
             text-align: center;
@@ -101,27 +101,27 @@
             max-width: 800px;
             margin: 40px auto;
             background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
+            padding: 30px;
             border: 2px solid var(--turmeric);
-            border-radius: 10px;
+            border-radius: 12px;
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             text-align: left;
+            margin-bottom: 20px;
         }
 
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; font-family: 'Tiro Devanagari Marathi', serif; color: var(--turmeric); }
+        .input-group label { display: block; margin-bottom: 8px; color: var(--turmeric); font-size: 0.9rem; }
         .input-group input, .input-group select {
             width: 100%;
             padding: 12px;
             background: var(--parchment);
             border: none;
-            outline: none;
             font-size: 1rem;
+            border-radius: 4px;
         }
 
         .book-btn {
@@ -132,24 +132,57 @@
             font-size: 1.2rem;
             font-weight: 600;
             cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
             transition: 0.3s;
-            margin-top: 20px;
+        }
+
+        .book-btn:hover { background: #fff; }
+
+        /* SIGNATURE MENU - CENTERED CORRECTION */
+        .menu-section {
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* केंद्रात आणण्यासाठी */
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            color: var(--kumkum);
+            margin-bottom: 60px;
             width: 100%;
         }
 
-        .book-btn:hover { background: #fff; transform: scale(1.02); }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            width: 100%;
+            max-width: 1100px; /* जास्त पसरू नये म्हणून */
+        }
 
-        /* PREVIOUS STYLES (STORY, MENU, BRANCHES) */
-        .story { padding: 100px 15%; text-align: center; }
-        .menu-section { padding: 100px 10%; }
-        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px; }
-        .jharokha { background: white; padding: 20px; border-radius: 500px 500px 0 0; box-shadow: 0 20px 50px rgba(0,0,0,0.06); text-align: center; }
+        .jharokha {
+            background: white;
+            padding: 20px;
+            border-radius: 500px 500px 0 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+            transition: 0.5s var(--ease);
+        }
+
+        .jharokha:hover { transform: translateY(-15px); }
         .img-wrap { width: 100%; aspect-ratio: 1/1; border-radius: 500px 500px 0 0; overflow: hidden; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
+        .jharokha:hover img { transform: scale(1.1); }
         
-        .branches { padding: 100px 10%; background: var(--ink); color: var(--parchment); }
-        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .stamp { border: 1px dashed var(--turmeric); padding: 40px; }
+        .item-desc { padding: 25px 10px; }
+        .item-desc h3 { font-size: 1.8rem; color: var(--kumkum); margin-bottom: 10px; }
+
+        /* BRANCHES */
+        .branches { padding: 100px 10%; background: var(--ink); color: var(--parchment); text-align: center; }
+        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .stamp { border: 1px dashed var(--turmeric); padding: 30px; transition: 0.4s; }
 
         .call-btn {
             position: fixed; bottom: 30px; right: 30px;
@@ -162,9 +195,10 @@
 
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        @media (max-width: 900px) {
-            .menu-grid { grid-template-columns: 1fr; }
+        @media (max-width: 800px) {
+            .menu-grid { grid-template-columns: 1fr; padding: 0 5%; }
             .hero h1 { font-size: 4rem; }
+            .booking-section { padding: 60px 5%; }
         }
     </style>
 </head>
@@ -180,27 +214,24 @@
     </section>
 
     <section class="booking-section">
-        <h2 class="marathi" style="font-size: 3rem;">टेबल आरक्षित करा</h2>
-        <p class="marathi">तुमच्या परिवारासाठी किंवा खास कार्यक्रमासाठी जागा बुक करा</p>
-        
+        <h2 class="marathi" style="font-size: 2.5rem; margin-bottom: 10px;">टेबल आरक्षित करा</h2>
         <div class="booking-container">
             <div class="form-grid">
                 <div class="input-group">
-                    <label>तुमचे नाव (Name)</label>
+                    <label class="marathi">तुमचे नाव</label>
                     <input type="text" id="cust_name" placeholder="उदा. राहुल पाटील">
                 </div>
                 <div class="input-group">
-                    <label>तारीख (Date)</label>
+                    <label class="marathi">तारीख</label>
                     <input type="date" id="book_date">
                 </div>
                 <div class="input-group">
-                    <label>वेळ (Time)</label>
+                    <label class="marathi">वेळ</label>
                     <input type="time" id="book_time">
                 </div>
                 <div class="input-group">
-                    <label>माणसांची संख्या (Person)</label>
+                    <label class="marathi">माणसे</label>
                     <select id="person_count">
-                        <option value="1">1 व्यक्ती</option>
                         <option value="2">2 व्यक्ती</option>
                         <option value="4">4 व्यक्ती</option>
                         <option value="6">6 व्यक्ती</option>
@@ -208,88 +239,89 @@
                     </select>
                 </div>
             </div>
-            <button class="book-btn marathi" onclick="sendToWhatsApp()">व्हॉट्सअ‍ॅपवर बुकिंग पाठवा</button>
+            <button class="book-btn marathi" onclick="sendToWhatsApp()">बुकिंगसाठी व्हॉट्सअ‍ॅप करा</button>
         </div>
-    </section>
-
-    <section class="story">
-        <h2 class="marathi" style="font-size: 3rem; color: var(--kumkum); margin-bottom: 20px;">आमची परंपरा</h2>
-        <p class="marathi" style="line-height: 1.8; font-size: 1.2rem;">साताऱ्याच्या मातीत २०२१ मध्ये 'हॉटेल सम्राट'ची पायाभरणी झाली. आमचे ध्येय केवळ उत्तम जेवण देणे नाही, तर आपल्या महाराष्ट्राचा अस्सल मसाल्यांचा वारसा जपणे हे आहे.</p>
     </section>
 
     <section class="menu-section">
         <h2 class="section-title display">Signature Menu</h2>
         <div class="menu-grid">
             <div class="jharokha">
-                <div class="img-wrap"><img src="mutton-malvani.jpg" alt="Mutton Malvani"></div>
-                <div class="item-desc"><h3 class="marathi">मटण मालवणी</h3></div>
+                <div class="img-wrap"><img src="mutton-malvani.jpg" alt="Mutton"></div>
+                <div class="item-desc">
+                    <h3 class="marathi">मटण मालवणी</h3>
+                    <p class="marathi">झणझणीत चवीचा गावरान अनुभव।</p>
+                </div>
             </div>
             <div class="jharokha">
-                <div class="img-wrap"><img src="murg-mussalam.webp" alt="Murg Mussalam"></div>
-                <div class="item-desc"><h3 class="marathi">मुर्ग मुसल्लम</h3></div>
+                <div class="img-wrap"><img src="murg-mussalam.webp" alt="Murg"></div>
+                <div class="item-desc">
+                    <h3 class="marathi">मुर्ग मुसल्लम</h3>
+                    <p class="marathi">शाही लज्जत आणि चवीचा संगम।</p>
+                </div>
             </div>
             <div class="jharokha">
-                <div class="img-wrap"><img src="chicken-handi.jpg" alt="Chicken Handi"></div>
-                <div class="item-desc"><h3 class="marathi">चिकन हंडी</h3></div>
+                <div class="img-wrap"><img src="chicken-handi.jpg" alt="Handi"></div>
+                <div class="item-desc">
+                    <h3 class="marathi">चिकन हंडी</h3>
+                    <p class="marathi">मातीच्या भांड्यातील खास स्वाद।</p>
+                </div>
             </div>
             <div class="jharokha">
                 <div class="img-wrap"><img src="Tandoori-Chicken-Recipe.jpg" alt="Tandoor"></div>
-                <div class="item-desc"><h3 class="marathi">व्हाईट ब्राईट तंदूर</h3></div>
+                <div class="item-desc">
+                    <h3 class="marathi">व्हाईट ब्राईट तंदूर</h3>
+                    <p class="marathi">ज्यूसी आणि मखमली कबाब।</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="branches">
-        <h2 class="marathi" style="text-align: center; font-size: 2.5rem; color: var(--turmeric); margin-bottom: 40px;">आमच्या शाखा</h2>
+        <h2 class="marathi" style="font-size: 2.5rem; color: var(--turmeric);">आमच्या शाखा</h2>
         <div class="branch-grid">
             <div class="stamp">
-                <h4>शाखा क्र. ०१</h4>
-                <p class="marathi">कोरेगाव, सातारा. 📞 9011390365</p>
+                <h4 class="display">BRANCH 01</h4>
+                <p class="marathi">कोरेगाव, सातारा। <br> 📞 9011390365</p>
             </div>
             <div class="stamp">
-                <h4>शाखा क्र. ०२</h4>
-                <p class="marathi">कोरेगाव रोड, सातारा. 📞 9623575702</p>
+                <h4 class="display">BRANCH 02</h4>
+                <p class="marathi">कोरेगाव रोड, सातारा। <br> 📞 9623575702</p>
             </div>
             <div class="stamp">
-                <h4>शाखा क्र. ०३ (Veg)</h4>
-                <p class="marathi">ल्हासुर्णे, सातारा. 📞 9604812425</p>
+                <p style="color: #2ecc71; font-weight: bold; font-size: 0.8rem;">PURE VEG</p>
+                <h4 class="display">BRANCH 03</h4>
+                <p class="marathi">ल्हासुर्णे, सातारा। <br> 📞 9604812425</p>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 40px; background: #000; text-align: center; color: #444;">
-        © 2026 हॉटेल सम्राट समूह | SATARA, MH
+    <footer style="padding: 40px; background: #000; text-align: center; color: #444; font-size: 0.8rem;">
+        © 2026 HOTELS SAMRAT GROUP | SATARA
     </footer>
 
     <script>
         function sendToWhatsApp() {
-            // तुमची माहिती गोळा करणे
             const name = document.getElementById('cust_name').value;
             const date = document.getElementById('book_date').value;
             const time = document.getElementById('book_time').value;
             const person = document.getElementById('person_count').value;
-            
-            // तुमचा WhatsApp नंबर (येथे बदलू शकता)
             const phoneNumber = "919011390365"; 
 
-            if(name == "" || date == "" || time == "") {
-                alert("कृपया सर्व माहिती भरा!");
+            if(!name || !date || !time) {
+                alert("कृपया पूर्ण माहिती भरा!");
                 return;
             }
 
-            // मेसेज तयार करणे
-            const message = `*टेबल बुकिंग (हॉटेल सम्राट)*%0A%0A` +
+            const message = `*नवीन टेबल बुकिंग (हॉटेल सम्राट)*%0A%0A` +
                             `*नाव:* ${name}%0A` +
                             `*तारीख:* ${date}%0A` +
                             `*वेळ:* ${time}%0A` +
                             `*माणसे:* ${person}%0A%0A` +
-                            `कृपया आमचे बुकिंग कन्फर्म करावे.`;
+                            `कृपया जागा आरक्षित ठेवावी ही विनंती.`;
 
-            // WhatsApp वर पाठवणे
-            const url = `https://wa.me/${phoneNumber}?text=${message}`;
-            window.open(url, '_blank').focus();
+            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
         }
     </script>
-
 </body>
 </html>

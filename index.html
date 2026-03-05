@@ -42,7 +42,7 @@
 
         @keyframes sunRotate { to { transform: translate(-50%, -50%) rotate(360deg); } }
 
-        /* HERO SECTION WITH STAGGERED REVEAL */
+        /* HERO SECTION */
         .hero {
             height: 100vh;
             display: flex;
@@ -85,81 +85,79 @@
             max-width: 700px;
         }
 
-        /* KEYFRAMES FOR REVEAL */
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 0.6; transform: translateY(0); } }
         @keyframes bloomIn { from { opacity: 0; filter: blur(15px); transform: scale(0.9); } to { opacity: 1; filter: blur(0); transform: scale(1); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* STORY SECTION */
-        .story { padding: 100px 15%; text-align: center; background: rgba(128, 0, 0, 0.03); }
-        .story h2 { font-size: 3rem; color: var(--kumkum); margin-bottom: 30px; }
-        .story p { font-size: 1.2rem; line-height: 1.8; opacity: 0.8; max-width: 850px; margin: 0 auto; }
-
-        /* SIGNATURE MENU (2x2 GRID) */
-        .menu-section { padding: 100px 10%; }
-        .section-title { font-size: 3.5rem; color: var(--kumkum); text-align: center; margin-bottom: 60px; }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 50px;
-        }
-
-        .jharokha {
-            background: white;
-            padding: 20px;
-            border-radius: 500px 500px 0 0;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-            transition: 0.5s var(--ease);
-            text-align: center;
-        }
-
-        .jharokha:hover { transform: translateY(-15px); }
-        .img-wrap { width: 100%; aspect-ratio: 1/1; border-radius: 500px 500px 0 0; overflow: hidden; }
-        .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; }
-        .jharokha:hover img { transform: scale(1.1); }
-        .item-desc { padding: 25px 10px; }
-        .item-desc h3 { font-size: 2.2rem; color: var(--kumkum); margin-bottom: 10px; }
-
-        /* STATS STRIP */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        /* RESERVATION FORM SECTION */
+        .booking-section {
+            padding: 100px 10%;
             background: var(--kumkum);
-            color: var(--turmeric);
-            padding: 80px 10%;
+            color: var(--parchment);
             text-align: center;
-            margin: 50px 0;
         }
 
-        .stat-box h4 { font-size: 3.5rem; margin-bottom: 5px; }
-        .stat-box p { color: white; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
+        .booking-container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border: 2px solid var(--turmeric);
+            border-radius: 10px;
+        }
 
-        /* BRANCHES */
-        .branches { padding: 100px 10%; background: var(--ink); color: var(--parchment); }
-        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .stamp { border: 1px dashed var(--turmeric); padding: 40px; transition: 0.4s; }
-        .stamp:hover { background: #222; }
-        .stamp h4 { font-size: 1.8rem; color: var(--turmeric); margin-bottom: 15px; }
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
 
-        /* CALL BUTTON */
-        .call-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; font-family: 'Tiro Devanagari Marathi', serif; color: var(--turmeric); }
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 12px;
+            background: var(--parchment);
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .book-btn {
             background: var(--turmeric);
             color: var(--kumkum);
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            z-index: 1000;
-            text-decoration: none;
-            animation: pulse 2s infinite;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .book-btn:hover { background: #fff; transform: scale(1.02); }
+
+        /* PREVIOUS STYLES (STORY, MENU, BRANCHES) */
+        .story { padding: 100px 15%; text-align: center; }
+        .menu-section { padding: 100px 10%; }
+        .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 50px; }
+        .jharokha { background: white; padding: 20px; border-radius: 500px 500px 0 0; box-shadow: 0 20px 50px rgba(0,0,0,0.06); text-align: center; }
+        .img-wrap { width: 100%; aspect-ratio: 1/1; border-radius: 500px 500px 0 0; overflow: hidden; }
+        .img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .branches { padding: 100px 10%; background: var(--ink); color: var(--parchment); }
+        .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .stamp { border: 1px dashed var(--turmeric); padding: 40px; }
+
+        .call-btn {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--turmeric); color: var(--kumkum);
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 1.8rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 1000;
+            text-decoration: none; animation: pulse 2s infinite;
         }
 
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
@@ -167,7 +165,6 @@
         @media (max-width: 900px) {
             .menu-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 4rem; }
-            .story { padding: 80px 5%; }
         }
     </style>
 </head>
@@ -182,9 +179,42 @@
         <p class="marathi hero-sub">परंपरेचा राजेशाही स्वाद आणि अस्सल गावरान चव</p>
     </section>
 
+    <section class="booking-section">
+        <h2 class="marathi" style="font-size: 3rem;">टेबल आरक्षित करा</h2>
+        <p class="marathi">तुमच्या परिवारासाठी किंवा खास कार्यक्रमासाठी जागा बुक करा</p>
+        
+        <div class="booking-container">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>तुमचे नाव (Name)</label>
+                    <input type="text" id="cust_name" placeholder="उदा. राहुल पाटील">
+                </div>
+                <div class="input-group">
+                    <label>तारीख (Date)</label>
+                    <input type="date" id="book_date">
+                </div>
+                <div class="input-group">
+                    <label>वेळ (Time)</label>
+                    <input type="time" id="book_time">
+                </div>
+                <div class="input-group">
+                    <label>माणसांची संख्या (Person)</label>
+                    <select id="person_count">
+                        <option value="1">1 व्यक्ती</option>
+                        <option value="2">2 व्यक्ती</option>
+                        <option value="4">4 व्यक्ती</option>
+                        <option value="6">6 व्यक्ती</option>
+                        <option value="10+">10 पेक्षा जास्त</option>
+                    </select>
+                </div>
+            </div>
+            <button class="book-btn marathi" onclick="sendToWhatsApp()">व्हॉट्सअ‍ॅपवर बुकिंग पाठवा</button>
+        </div>
+    </section>
+
     <section class="story">
-        <h2 class="marathi">आमची परंपरा</h2>
-        <p class="marathi">साताऱ्याच्या मातीत २०२१ मध्ये 'हॉटेल सम्राट'ची पायाभरणी झाली. आमचे ध्येय केवळ उत्तम जेवण देणे नाही, तर आपल्या महाराष्ट्राचा अस्सल मसाल्यांचा वारसा जपणे हे आहे. ताज्या मसाल्यांपासून तयार केलेली प्रत्येक डिश तुम्हाला एका राजेशाही मेजवानीचा अनुभव देईल. खवय्यांच्या समाधानासाठी आम्ही कटिबद्ध आहोत.</p>
+        <h2 class="marathi" style="font-size: 3rem; color: var(--kumkum); margin-bottom: 20px;">आमची परंपरा</h2>
+        <p class="marathi" style="line-height: 1.8; font-size: 1.2rem;">साताऱ्याच्या मातीत २०२१ मध्ये 'हॉटेल सम्राट'ची पायाभरणी झाली. आमचे ध्येय केवळ उत्तम जेवण देणे नाही, तर आपल्या महाराष्ट्राचा अस्सल मसाल्यांचा वारसा जपणे हे आहे.</p>
     </section>
 
     <section class="menu-section">
@@ -192,79 +222,74 @@
         <div class="menu-grid">
             <div class="jharokha">
                 <div class="img-wrap"><img src="mutton-malvani.jpg" alt="Mutton Malvani"></div>
-                <div class="item-desc">
-                    <h3 class="marathi">मटण मालवणी</h3>
-                    <p>कोकणच्या किनाऱ्यावरील अस्सल मसाल्यांचा वापर करून तयार केलेली झणझणीत मालवणी थाळी.</p>
-                </div>
+                <div class="item-desc"><h3 class="marathi">मटण मालवणी</h3></div>
             </div>
             <div class="jharokha">
                 <div class="img-wrap"><img src="murg-mussalam.webp" alt="Murg Mussalam"></div>
-                <div class="item-desc">
-                    <h3 class="marathi">मुर्ग मुसल्लम</h3>
-                    <p>शाही मुघलाई मसाल्यांमध्ये शिजवलेले लज्जतदार चिकन, जे राजेशाही थाटाचे प्रतीक आहे.</p>
-                </div>
+                <div class="item-desc"><h3 class="marathi">मुर्ग मुसल्लम</h3></div>
             </div>
             <div class="jharokha">
                 <div class="img-wrap"><img src="chicken-handi.jpg" alt="Chicken Handi"></div>
-                <div class="item-desc">
-                    <h3 class="marathi">चिकन हंडी</h3>
-                    <p>मातीच्या भांड्यात मंद आचेवर शिजवलेली आणि सम्राट मसाल्यांची फोडणी दिलेली चविष्ट चिकन हंडी.</p>
-                </div>
+                <div class="item-desc"><h3 class="marathi">चिकन हंडी</h3></div>
             </div>
             <div class="jharokha">
-                <div class="img-wrap"><img src="Tandoori-Chicken-Recipe.jpg" alt="White Tandoor"></div>
-                <div class="item-desc">
-                    <h3 class="marathi">व्हाईट ब्राईट तंदूर</h3>
-                    <p>मखमली कबाब आणि कोळशावर भाजलेला अस्सल धुरकट स्वाद, जो जिभेवर रेंगाळत राईल.</p>
-                </div>
+                <div class="img-wrap"><img src="Tandoori-Chicken-Recipe.jpg" alt="Tandoor"></div>
+                <div class="item-desc"><h3 class="marathi">व्हाईट ब्राईट तंदूर</h3></div>
             </div>
-        </div>
-    </section>
-
-    <section class="stats">
-        <div class="stat-box">
-            <h4 class="display">05+</h4>
-            <p>Years of Legacy</p>
-        </div>
-        <div class="stat-box">
-            <h4 class="display">10k+</h4>
-            <p>Happy Guests</p>
-        </div>
-        <div class="stat-box">
-            <h4 class="display">03</h4>
-            <p>Prime Locations</p>
-        </div>
-        <div class="stat-box">
-            <h4 class="display">100%</h4>
-            <p>Authentic Spices</p>
         </div>
     </section>
 
     <section class="branches">
-        <h2 class="marathi" style="text-align: center; font-size: 3rem; color: var(--turmeric); margin-bottom: 50px;">आमच्या शाखा</h2>
+        <h2 class="marathi" style="text-align: center; font-size: 2.5rem; color: var(--turmeric); margin-bottom: 40px;">आमच्या शाखा</h2>
         <div class="branch-grid">
             <div class="stamp">
                 <h4>शाखा क्र. ०१</h4>
-                <p class="marathi">सातारा-पंढरपूर रोड, नायरा पेट्रोल पंपाशेजारी, कोरेगाव.</p>
-                <p style="margin-top: 15px; color: var(--turmeric);">📞 9011390365</p>
+                <p class="marathi">कोरेगाव, सातारा. 📞 9011390365</p>
             </div>
             <div class="stamp">
                 <h4>शाखा क्र. ०२</h4>
-                <p class="marathi">कोरेगाव-पुसेगाव रोड, कुमठे फाट्या पुढे, कोरेगाव.</p>
-                <p style="margin-top: 15px; color: var(--turmeric);">📞 9623575702</p>
+                <p class="marathi">कोरेगाव रोड, सातारा. 📞 9623575702</p>
             </div>
             <div class="stamp">
-                <p style="color: #2ecc71; font-weight: bold; margin-bottom: 10px;">SHUDDHA SHAKAHARI</p>
-                <h4>शाखा क्र. ०३</h4>
-                <p class="marathi">मुगाव फाटा, ल्हासुर्णे, सातारा-पंढरपूर रोड.</p>
-                <p style="margin-top: 15px; color: var(--turmeric);">📞 9604812425</p>
+                <h4>शाखा क्र. ०३ (Veg)</h4>
+                <p class="marathi">ल्हासुर्णे, सातारा. 📞 9604812425</p>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 40px; background: #000; text-align: center; color: #444; font-size: 0.8rem;">
-        © 2026 हॉटेल सम्राट समूह | AUTHENTICITY GUARANTEED | SATARA, MH
+    <footer style="padding: 40px; background: #000; text-align: center; color: #444;">
+        © 2026 हॉटेल सम्राट समूह | SATARA, MH
     </footer>
+
+    <script>
+        function sendToWhatsApp() {
+            // तुमची माहिती गोळा करणे
+            const name = document.getElementById('cust_name').value;
+            const date = document.getElementById('book_date').value;
+            const time = document.getElementById('book_time').value;
+            const person = document.getElementById('person_count').value;
+            
+            // तुमचा WhatsApp नंबर (येथे बदलू शकता)
+            const phoneNumber = "919011390365"; 
+
+            if(name == "" || date == "" || time == "") {
+                alert("कृपया सर्व माहिती भरा!");
+                return;
+            }
+
+            // मेसेज तयार करणे
+            const message = `*टेबल बुकिंग (हॉटेल सम्राट)*%0A%0A` +
+                            `*नाव:* ${name}%0A` +
+                            `*तारीख:* ${date}%0A` +
+                            `*वेळ:* ${time}%0A` +
+                            `*माणसे:* ${person}%0A%0A` +
+                            `कृपया आमचे बुकिंग कन्फर्म करावे.`;
+
+            // WhatsApp वर पाठवणे
+            const url = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(url, '_blank').focus();
+        }
+    </script>
 
 </body>
 </html>
